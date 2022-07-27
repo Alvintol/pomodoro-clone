@@ -21,7 +21,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch-tw": "tailwindcss -i ./src/main.css -o ./src/css/main.css --watch",
+    "watch-tsc": "tsc --watch --jsx preserve -t esnext --outDir dist --noEmit false",
+    "watch": "npm run watch-tw watch-tsc"
   },
   "eslintConfig": {
     "extends": [
