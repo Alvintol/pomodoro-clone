@@ -9,7 +9,7 @@ const App = () => {
       <p>Pomodoro Clone</p>
       <div
         id='container'
-        className='flex flex-col justify-around border border-red-900 h-1/2 w-1/2'
+        className='flex flex-col justify-around border border-red-900 h-1/2 w-1/2 rounded-lg'
       >
         <div id='options' className='flex flex-row justify-around text-center'>
           <div id='session'>Session</div>

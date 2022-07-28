@@ -8,7 +8,16 @@ module.exports = {
     './dist/*.js',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'blue': '#d6e6ff',
+        'lightBlue': '#d7f9f8',
+        'yellow': '#ffffea',
+        'orange': '#fff0d4',
+        'pink': '#fbe0e0',
+        'purple': '#e5d4ef', 
+      }
+    },
     screens: {
       xs: '320px',
       sm: '420px',
