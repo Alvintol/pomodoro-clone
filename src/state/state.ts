@@ -5,11 +5,11 @@ interface State {
   timer: string;
 }
 
-const state: State = {
+const appState: State = {
   min: 25,
   seconds: 0,
   option: 'SESSION',
   timer: 'OFF',
 };
 
-export default state;
+export default appState;
