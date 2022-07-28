@@ -1,7 +1,6 @@
 import './css/main.css';
 const App = () => {
     return (<div id='app' className='bg-orange text-center h-screen flex flex-col items-center justify-center'>
-      <p>Pomodoro Clone</p>
       <div id='container' className='bg-purple flex flex-col justify-around h-1/2 w-1/2 rounded-lg'>
         <div id='options' className='bg-pink flex flex-col items-center text-center rounded-md md:justify-around md:flex-row mx-3'>
           <div id='session'>Session</div>

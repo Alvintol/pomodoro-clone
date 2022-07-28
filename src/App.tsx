@@ -6,7 +6,6 @@ const App = () => {
       id='app'
       className='bg-orange text-center h-screen flex flex-col items-center justify-center'
     >
-      <p>Pomodoro Clone</p>
       <div
         id='container'
         className='bg-purple flex flex-col justify-around h-1/2 w-1/2 rounded-lg'
