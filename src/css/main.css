@@ -575,16 +575,20 @@ video {
   display: flex;
 }
 
-.h-1\/2 {
-  height: 50%;
-}
-
 .h-screen {
   height: 100vh;
 }
 
+.h-1\/2 {
+  height: 50%;
+}
+
 .w-1\/2 {
   width: 50%;
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-col {
@@ -599,8 +603,18 @@ video {
   justify-content: center;
 }
 
-.self-center {
-  align-self: center;
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .border {
@@ -616,3 +630,6 @@ video {
   text-align: center;
 }
 
+* {
+  border: thin solid red;
+}
