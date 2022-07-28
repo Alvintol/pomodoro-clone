@@ -1,9 +1,9 @@
 import './css/main.css';
 const App = () => {
-    return (<div id='app' className='text-center h-screen flex flex-col items-center justify-center'>
+    return (<div id='app' className='bg-orange text-center h-screen flex flex-col items-center justify-center'>
       <p>Pomodoro Clone</p>
-      <div id='container' className='flex flex-col justify-around border border-red-900 h-1/2 w-1/2 rounded-lg'>
-        <div id='options' className='flex flex-row justify-around text-center'>
+      <div id='container' className='bg-purple flex flex-col justify-around h-1/2 w-1/2 rounded-lg'>
+        <div id='options' className='bg-pink flex flex-col items-center text-center rounded-md md:justify-around md:flex-row mx-3'>
           <div id='session'>Session</div>
           <div id='short' className='flex flex-row items-center'>
             <i id='down-short' className='fa-solid fa-arrow-down-long mr-1 hover:opacity-50'></i>
