@@ -8,7 +8,7 @@ const App = () => {
     >
       <div
         id='container'
-        className='bg-purple flex flex-col justify-around h-1/2 w-5/6 rounded-lg'
+        className='bg-purple flex flex-col justify-around h-1/2 w-5/6 rounded-lg p-3'
       >
         <div id='options' className='bg-pink flex flex-col items-center text-center rounded-md md:justify-around md:flex-row mx-3'>
           <div id='session' >Session</div>
@@ -23,7 +23,7 @@ const App = () => {
             <i id='up-long' className='fa-solid fa-arrow-up-long ml-1 hover:opacity-50'></i>
           </div>
         </div>
-        <div id='timer' className='flex flex-col justify-center h-1/2 text-[50px] sm:text-[75px] md:text-[125px]'>25:00</div>
+        <div id='timer' className='flex flex-col justify-center h-1/2 font-bold text-[50px] sm:text-[75px] md:text-[125px]'>25:00</div>
         <div id='controls' className='flex flex-row justify-center'>
         <i id='start' className="fa-solid fa-play mx-2 text-2xl hover:opacity-50"></i>
         <i id='pause' className="fa-solid fa-pause mx-2 text-2xl hover:opacity-50"></i>
