@@ -581,6 +581,19 @@ video {
   margin: 0.25rem;
 }
 
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
 .flex {
   display: flex;
 }
@@ -617,6 +630,10 @@ video {
   justify-content: space-around;
 }
 
+.self-center {
+  align-self: center;
+}
+
 .border {
   border-width: 1px;
 }
@@ -634,8 +651,8 @@ video {
   font-size: 50px;
 }
 
-* {
-  border: thin solid red;
+.hover\:opacity-50:hover {
+  opacity: 0.5;
 }
 
 @media (min-width: 420px) {
@@ -645,11 +662,8 @@ video {
 }
 
 @media (min-width: 768px) {
-  .md\:text-\[100px\] {
-    font-size: 100px;
-  }
-
   .md\:text-\[125px\] {
     font-size: 125px;
   }
 }
+
