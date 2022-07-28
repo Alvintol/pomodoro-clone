@@ -620,6 +620,14 @@ video {
   width: 50%;
 }
 
+.w-5\/6 {
+  width: 83.333333%;
+}
+
+.w-full {
+  width: 100%;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -634,6 +642,10 @@ video {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .justify-around {
@@ -691,6 +703,21 @@ video {
   background-color: rgb(251 224 224 / var(--tw-bg-opacity));
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -699,17 +726,66 @@ video {
   font-size: 50px;
 }
 
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .hover\:opacity-50:hover {
   opacity: 0.5;
 }
 
+@media (min-width: 320px) {
+  .xs\:w-full {
+    width: 100%;
+  }
+}
+
 @media (min-width: 420px) {
+  .sm\:w-full {
+    width: 100%;
+  }
+
+  .sm\:w-2\/5 {
+    width: 40%;
+  }
+
+  .sm\:w-3\/5 {
+    width: 60%;
+  }
+
+  .sm\:w-3\/4 {
+    width: 75%;
+  }
+
+  .sm\:justify-between {
+    justify-content: space-between;
+  }
+
   .sm\:text-\[75px\] {
     font-size: 75px;
   }
 }
 
 @media (min-width: 768px) {
+  .md\:w-1 {
+    width: 0.25rem;
+  }
+
+  .md\:w-1\/6 {
+    width: 16.666667%;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
