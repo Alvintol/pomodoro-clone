@@ -16,7 +16,7 @@ const App = () => {
             <i id='up-long' className='fa-solid fa-arrow-up-long'></i>
           </div>
         </div>
-        <div id='timer' className='h-1/2'>Timer</div>
+        <div id='timer' className='h-1/2 text-[50px] sm:text-[75px] md:text-[125px]'>25:00</div>
         <div id='controls' className='flex flex-row justify-center'>
         <i id='start' className="fa-solid fa-play m-1"></i>
         <i id='pause' className="fa-solid fa-pause m-1"></i>
