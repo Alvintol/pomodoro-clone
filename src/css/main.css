@@ -571,6 +571,10 @@ video {
   }
 }
 
+.m-1 {
+  margin: 0.25rem;
+}
+
 .flex {
   display: flex;
 }
