@@ -1,4 +1,5 @@
 import Control from './components/Control';
+import Timer from './components/Timer';
 import './css/main.css';
 const App = () => {
     return (<div data-testid='app' id='app' className='bg-orange text-center h-screen flex flex-col items-center justify-center'>
@@ -16,9 +17,7 @@ const App = () => {
             <i id='up-long' className='fa-solid fa-arrow-up-long ml-1 hover:opacity-50'></i>
           </div>
         </div>
-        <div id='timer' className='flex flex-col justify-center h-1/2 font-bold text-[50px] sm:text-[75px] md:text-[125px]'>
-          25:00
-        </div>
+        <Timer />
         <div id='controls' className='flex flex-row justify-center'>
           <Control id='START'/>
           <Control id='PAUSE'/>
