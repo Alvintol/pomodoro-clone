@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import Control from './components/Control';
 import Timer from './components/Timer';
 
 
@@ -47,12 +48,9 @@ describe('Components', () => {
   //   expect(controls).toBeInTheDocument();
   // })
   
-  // it('renders Control component', () => {
+  // it('renders Start component', () => {
   //   render(<Control />);
-  //   const control = screen.getByTestId('control');
-  //   expect(control).toBeInTheDocument();
+  //   const start = screen.getByTestId('START');
+  //   expect(start).toBeInTheDocument();
   // })
-  
-
-
 });

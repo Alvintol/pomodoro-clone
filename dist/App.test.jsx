@@ -37,9 +37,9 @@ describe('Components', () => {
     //   const controls = screen.getByTestId('controls');
     //   expect(controls).toBeInTheDocument();
     // })
-    // it('renders Control component', () => {
+    // it('renders Start component', () => {
     //   render(<Control />);
-    //   const control = screen.getByTestId('control');
-    //   expect(control).toBeInTheDocument();
+    //   const start = screen.getByTestId('START');
+    //   expect(start).toBeInTheDocument();
     // })
 });
