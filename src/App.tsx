@@ -1,6 +1,4 @@
-import Controls from './components/Controls';
-import Options from './components/Options';
-import Timer from './components/Timer';
+import Container from './components/Container';
 import './css/main.css';
 
 const App = () => {
@@ -10,14 +8,7 @@ const App = () => {
       id='app'
       className='bg-orange text-center h-screen flex flex-col items-center justify-center'
     >
-      <div
-        id='container'
-        className='bg-purple flex flex-col justify-around h-1/2 w-5/6 rounded-lg p-3'
-      >
-        <Options />
-        <Timer />
-        <Controls />
-      </div>
+      <Container />
     </div>
   );
 };
