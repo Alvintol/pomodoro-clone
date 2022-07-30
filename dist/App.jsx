@@ -1,3 +1,4 @@
+import Control from './components/Control';
 import './css/main.css';
 const App = () => {
     return (<div data-testid='app' id='app' className='bg-orange text-center h-screen flex flex-col items-center justify-center'>
@@ -19,9 +20,9 @@ const App = () => {
           25:00
         </div>
         <div id='controls' className='flex flex-row justify-center'>
-          <i id='start' className='fa-solid fa-play mx-2 text-2xl hover:opacity-50'></i>
-          <i id='pause' className='fa-solid fa-pause mx-2 text-2xl hover:opacity-50'></i>
-          <i id='reset' className='fa-solid fa-rotate mx-2 text-2xl hover:opacity-50'></i>
+          <Control id='START'/>
+          <Control id='PAUSE'/>
+          <Control id='RESET'/>
         </div>
       </div>
     </div>);
