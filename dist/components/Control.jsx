@@ -9,6 +9,6 @@ const Control = ({ id }) => {
                 return 'fa-solid fa-rotate mx-2 text-2xl hover:opacity-50';
         }
     };
-    return <i data-testid={id} id={id} className={iconClass()}></i>;
+    return <i data-testid='control' id={id} className={iconClass()}></i>;
 };
 export default Control;

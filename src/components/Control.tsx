@@ -10,7 +10,7 @@ const Control = ({ id }: any) => {
     }
   };
 
-  return <i data-testid={id} id={id} className={iconClass()}></i>;
+  return <i data-testid='control' id={id} className={iconClass()}></i>;
 };
 
 export default Control;

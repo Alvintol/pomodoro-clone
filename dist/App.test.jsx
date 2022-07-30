@@ -1,6 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import Arrow from './components/Arrow';
+import Break from './components/Break';
+import Control from './components/Control';
 import Controls from './components/Controls';
+import Options from './components/Options';
 import Session from './components/Session';
 import Timer from './components/Timer';
 describe('Components', () => {
@@ -14,26 +18,26 @@ describe('Components', () => {
     //   const container = screen.getByTestId('container');
     //   expect(container).toBeInTheDocument();
     // })
-    // it('renders Options component', () => {
-    //   render(<Options />);
-    //   const options = screen.getByTestId('options');
-    //   expect(options).toBeInTheDocument();
-    // })
+    it('renders Options component', () => {
+        render(<Options />);
+        const options = screen.getByTestId('options');
+        expect(options).toBeInTheDocument();
+    });
     it('renders Session component', () => {
         render(<Session />);
         const session = screen.getByTestId('session');
         expect(session).toBeInTheDocument();
     });
-    // it('renders Break component', () => {
-    //   render(<Break />);
-    //   const break = screen.getByTestId('break');
-    //   expect(break).toBeInTheDocument();
-    // })
-    // it('renders Arrow component', () => {
-    //   render(<Arrow />);
-    //   const arrow = screen.getByTestId('arrow');
-    //   expect(arrow).toBeInTheDocument();
-    // })
+    it('renders Break component', () => {
+        render(<Break id='test'/>);
+        const breakTest = screen.getByTestId('break');
+        expect(breakTest).toBeInTheDocument();
+    });
+    it('renders Arrow component', () => {
+        render(<Arrow id='test' type='test'/>);
+        const arrow = screen.getByTestId('arrow');
+        expect(arrow).toBeInTheDocument();
+    });
     it('renders Timer component', () => {
         render(<Timer />);
         const timer = screen.getByTestId('timer');
@@ -44,9 +48,9 @@ describe('Components', () => {
         const controls = screen.getByTestId('controls');
         expect(controls).toBeInTheDocument();
     });
-    // it('renders Start component', () => {
-    //   render(<Control />);
-    //   const start = screen.getByTestId('START');
-    //   expect(start).toBeInTheDocument();
-    // })
+    it('renders Control component', () => {
+        render(<Control />);
+        const start = screen.getByTestId('control');
+        expect(start).toBeInTheDocument();
+    });
 });

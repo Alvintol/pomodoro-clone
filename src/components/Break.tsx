@@ -15,6 +15,7 @@ const Break = ({id}: BreakOption) => {
   
   return (
     <div
+    data-testid='break'
       id={id}
       className='flex flex-row w-full justify-between items-center px-5 sm:w-3/4 md:w-1/6'
     >
