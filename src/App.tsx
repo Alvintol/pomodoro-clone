@@ -1,3 +1,4 @@
+import Arrow from './components/Arrow';
 import Control from './components/Control';
 import Session from './components/Session';
 import Timer from './components/Timer';
@@ -23,29 +24,29 @@ const App = () => {
             id='short'
             className='flex flex-row w-full justify-between items-center px-5 sm:w-3/4 md:w-1/6'
           >
-            <i
-              id='down-short'
-              className='fa-solid fa-arrow-down-long mr-1 hover:opacity-50 '
-            ></i>
+            <Arrow 
+            id='down-short'
+            type='DOWN'
+            />
             Short
-            <i
-              id='up-short'
-              className='fa-solid fa-arrow-up-long ml-1 hover:opacity-50'
-            ></i>
+            <Arrow 
+            id='up-short'
+            type='UP'
+            />
           </div>
           <div
             id='long'
             className='flex flex-row w-full justify-between items-center px-5 sm:w-3/4 md:w-1/6'
           >
-            <i
-              id='down-long'
-              className='fa-solid fa-arrow-down-long mr-1 hover:opacity-50'
-            ></i>
+            <Arrow 
+            id='down-long'
+            type='DOWN'
+            />
             Long
-            <i
-              id='up-long'
-              className='fa-solid fa-arrow-up-long ml-1 hover:opacity-50'
-            ></i>
+            <Arrow 
+            id='up-long'
+            type='UP'
+            />
           </div>
         </div>
         <Timer />
