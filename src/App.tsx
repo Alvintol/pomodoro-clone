@@ -1,4 +1,5 @@
 import Control from './components/Control';
+import Session from './components/Session';
 import Timer from './components/Timer';
 import './css/main.css';
 
@@ -17,7 +18,7 @@ const App = () => {
           id='options'
           className='bg-pink flex flex-col items-center text-center rounded-md md:justify-around md:flex-row mx-3'
         >
-          <div id='session'>Session</div>
+          <Session />
           <div
             id='short'
             className='flex flex-row w-full justify-between items-center px-5 sm:w-3/4 md:w-1/6'
