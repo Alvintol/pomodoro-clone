@@ -1,6 +1,7 @@
 import Control from './Control';
 const Controls = () => {
-    return (<div data-testid='controls' id='controls' className='flex flex-row justify-center'>
+    const controlsClass = 'flex flex-row justify-center';
+    return (<div data-testid='controls' id='controls' className={controlsClass}>
       <Control id='START'/>
       <Control id='PAUSE'/>
       <Control id='RESET'/>

@@ -1,4 +1,9 @@
-const Control = ({ id }: any) => {
+interface ControlBtn {
+  id: string;
+}
+
+const Control = ({ id }: ControlBtn) => {
+  
   const iconClass = () => {
     switch (id) {
       case 'START':
