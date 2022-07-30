@@ -2,7 +2,8 @@ import Arrow from './Arrow';
 const Break = ({ id }) => {
     const capitalize = (str) => {
         const strSplit = str.split('');
-        return strSplit.splice(0, 1, id[0].toUpperCase()).join('');
+        const noFirst = strSplit.splice(1);
+        return id[0].toUpperCase() + noFirst.join('');
     };
     return (<div id={id} className='flex flex-row w-full justify-between items-center px-5 sm:w-3/4 md:w-1/6'>
       <Arrow id='down-short' type='DOWN'/>

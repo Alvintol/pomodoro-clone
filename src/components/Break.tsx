@@ -1,16 +1,16 @@
 import Arrow from './Arrow';
 
-interface Break {
+interface BreakOption {
   id: string;
 }
 
 
-const Break = ({id}: Break) => {
+const Break = ({id}: BreakOption) => {
 
   const capitalize = (str:string) => {
     const strSplit = str.split('');
-
-    return strSplit.splice(0, 1, id[0].toUpperCase()).join('');
+    const noFirst = strSplit.splice(1)
+    return id[0].toUpperCase() + noFirst.join('');
   } 
   
   return (
