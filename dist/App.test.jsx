@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import Controls from './components/Controls';
 import Session from './components/Session';
 import Timer from './components/Timer';
 describe('Components', () => {
@@ -38,11 +39,11 @@ describe('Components', () => {
         const timer = screen.getByTestId('timer');
         expect(timer).toBeInTheDocument();
     });
-    // it('renders Controls component', () => {
-    //   render(<Controls />);
-    //   const controls = screen.getByTestId('controls');
-    //   expect(controls).toBeInTheDocument();
-    // })
+    it('renders Controls component', () => {
+        render(<Controls />);
+        const controls = screen.getByTestId('controls');
+        expect(controls).toBeInTheDocument();
+    });
     // it('renders Start component', () => {
     //   render(<Control />);
     //   const start = screen.getByTestId('START');

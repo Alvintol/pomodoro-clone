@@ -1,5 +1,5 @@
 import Break from './components/Break';
-import Control from './components/Control';
+import Controls from './components/Controls';
 import Session from './components/Session';
 import Timer from './components/Timer';
 import './css/main.css';
@@ -12,11 +12,7 @@ const App = () => {
           <Break id='long'/>
         </div>
         <Timer />
-        <div id='controls' className='flex flex-row justify-center'>
-          <Control id='START'/>
-          <Control id='PAUSE'/>
-          <Control id='RESET'/>
-        </div>
+        <Controls />
       </div>
     </div>);
 };
