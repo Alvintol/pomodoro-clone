@@ -1,7 +1,5 @@
-import Break from './components/Break';
 import Controls from './components/Controls';
 import Options from './components/Options';
-import Session from './components/Session';
 import Timer from './components/Timer';
 import './css/main.css';
 
