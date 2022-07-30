@@ -1,4 +1,3 @@
-import Arrow from './components/Arrow';
 import Break from './components/Break';
 import Control from './components/Control';
 import Session from './components/Session';
