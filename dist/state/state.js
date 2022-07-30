@@ -1,5 +1,5 @@
 const appState = {
-    min: 25,
+    minutes: 25,
     seconds: 0,
     option: 'SESSION',
     timer: 'OFF',
