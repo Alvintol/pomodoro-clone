@@ -5,7 +5,7 @@ const Session = () => {
   const state = useAppState();
 
   return (
-    <div id='session'>Session</div>
+    <div data-testid='session' id='session'>Session</div>
   )
 };
 
