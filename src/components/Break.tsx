@@ -17,7 +17,7 @@ const Break = ({ id }: BreakOption) => {
   };
 
   const breakClass: string =
-    'flex flex-row w-full justify-between items-center px-5 sm:px-10 md:w-1/3 ' +
+    'flex flex-row w-full rounded-md justify-between items-center px-5 sm:px-10 md:w-1/3 ' +
     isToggled(id, option);
 
   return (
