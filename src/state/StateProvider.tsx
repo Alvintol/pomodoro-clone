@@ -9,6 +9,10 @@ export const StateProvider = ({ children }: any) => {
 
   const [state, setState] = useState(appState);
 
+  const addTime = () => {
+    setState(prev => ({...prev, minutes: prev.minutes++}))
+  }
+
   return (
     <StateContext.Provider value={state}>
     {children}
