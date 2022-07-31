@@ -8,6 +8,7 @@ import Controls from './components/Controls';
 import Options from './components/Options';
 import Session from './components/Session';
 import Timer from './components/Timer';
+import { isToggled } from './helpers/helperFunctions';
 describe('Components', () => {
     it('renders App component', () => {
         render(<App />);
@@ -53,5 +54,14 @@ describe('Components', () => {
         render(<Control id='test'/>);
         const start = screen.getByTestId('control');
         expect(start).toBeInTheDocument();
+    });
+});
+describe('Helpers', () => {
+    it('returns true if toggled', () => {
+        const state = {
+            option: 'session'
+        };
+        const id = 'session';
+        expect(isToggled(id, state.option)).toBeTruthy();
     });
 });
