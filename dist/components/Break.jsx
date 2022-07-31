@@ -5,8 +5,8 @@ const Break = ({ id }) => {
         const noFirst = strSplit.splice(1);
         return id[0].toUpperCase() + noFirst.join('');
     };
-    const arrowClass = 'flex flex-row w-full justify-between items-center px-5 sm:w-3/4 md:w-1/6';
-    return (<div data-testid='break' id={id} className={arrowClass}>
+    const breakClass = 'bg-lightBlue flex flex-row w-full justify-between items-center px-5 sm:px-10 md:w-1/3';
+    return (<div data-testid='break' id={id} className={breakClass}>
       <Arrow id='down-short' type='DOWN'/>
       {capitalize(id)}
       <Arrow id='up-short' type='UP'/>

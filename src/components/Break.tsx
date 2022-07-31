@@ -11,11 +11,11 @@ const Break = ({ id }: BreakOption) => {
     return id[0].toUpperCase() + noFirst.join('');
   };
 
-  const arrowClass: string =
-    'flex flex-row w-full justify-between items-center px-5 sm:w-3/4 md:w-1/6';
+  const breakClass: string =
+    'bg-lightBlue flex flex-row w-full justify-between items-center px-5 sm:px-10 md:w-1/3';
 
   return (
-    <div data-testid='break' id={id} className={arrowClass}>
+    <div data-testid='break' id={id} className={breakClass}>
       <Arrow id='down-short' type='DOWN' />
       {capitalize(id)}
       <Arrow id='up-short' type='UP' />
