@@ -8,7 +8,7 @@ interface State {
 const appState: State = {
   minutes: 25,
   seconds: 0,
-  option: 'Session',
+  option: 'session',
   timer: 'OFF',
 };
 
