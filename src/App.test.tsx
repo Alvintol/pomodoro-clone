@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { useState } from 'react';
 import App from './App';
 import Arrow from './components/Arrow';
 import Break from './components/Break';
@@ -68,13 +69,28 @@ describe('Components', () => {
   })
 });
 
+const state = {
+  minutes: 25,
+  seconds: 0,
+  option: 'session',
+  timer: 'OFF',
+};
+
+// describe('State Provider', () => {
+
+//   it('adds time to minutes state', ()=> {
+//     const addTime = () => {
+//       setState(prev => ({...prev, minutes: prev.minutes++}))
+//     }
+//   })
+// })
+
 describe('Helpers', () => {
 
   it('returns true if toggled', () => {
-    const state = {
-      option: 'session'
-    };
+
     const id = 'session'
     expect(isToggled(id, state.option)).toBeTruthy()
   })
+
 })

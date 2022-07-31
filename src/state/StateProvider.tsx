@@ -2,20 +2,23 @@ import { createContext, useContext, useState } from 'react';
 import appState from './state';
 
 const StateContext = createContext(appState);
+const AddTimeContext = createContext({});
 
 export const useAppState = () => useContext(StateContext);
+export const useAddTime = () => useContext(AddTimeContext);
 
 export const StateProvider = ({ children }: any) => {
-
   const [state, setState] = useState(appState);
 
   const addTime = () => {
-    setState(prev => ({...prev, minutes: prev.minutes++}))
-  }
+    setState((prev)=> ({ ...prev, minutes: prev.minutes++ }));
+  };
 
   return (
     <StateContext.Provider value={state}>
-    {children}
+      <AddTimeContext.Provider value={addTime}>
+        {children}
+        </AddTimeContext.Provider>
     </StateContext.Provider>
-  )
+  );
 };
