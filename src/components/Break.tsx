@@ -1,3 +1,5 @@
+import { isToggled } from '../helpers/helperFunctions';
+import { useAppState } from '../state/StateProvider';
 import Arrow from './Arrow';
 
 interface BreakOption {
@@ -5,6 +7,9 @@ interface BreakOption {
 }
 
 const Break = ({ id }: BreakOption) => {
+  const state = useAppState();
+  const { option } = state;
+
   const capitalize = (str: string) => {
     const strSplit = str.split('');
     const noFirst = strSplit.splice(1);
@@ -12,7 +17,8 @@ const Break = ({ id }: BreakOption) => {
   };
 
   const breakClass: string =
-    'bg-lightBlue flex flex-row w-full justify-between items-center px-5 sm:px-10 md:w-1/3';
+    'flex flex-row w-full justify-between items-center px-5 sm:px-10 md:w-1/3 ' +
+    isToggled(id, option);
 
   return (
     <div data-testid='break' id={id} className={breakClass}>

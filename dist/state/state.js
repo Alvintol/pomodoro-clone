@@ -1,7 +1,7 @@
 const appState = {
     minutes: 25,
     seconds: 0,
-    option: 'SESSION',
+    option: 'Session',
     timer: 'OFF',
 };
 export default appState;
