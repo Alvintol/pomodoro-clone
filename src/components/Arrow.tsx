@@ -1,4 +1,4 @@
-import { useAppState } from '../state/StateProvider';
+import { useAddTime } from '../state/StateProvider';
 
 
 interface arrowBtn {
@@ -12,7 +12,7 @@ const Arrow = ({ id, type }: arrowBtn) => {
       ? 'fa-solid fa-arrow-up-long mr-1 hover:opacity-50'
       : 'fa-solid fa-arrow-down-long mr-1 hover:opacity-50';
 
-  const addTime = useAppState()
+  const addTime = useAddTime()
 
   const handleClick = () => {
     console.log('CLICKED:', id);

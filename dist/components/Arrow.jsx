@@ -1,9 +1,9 @@
-import { useAppState } from '../state/StateProvider';
+import { useAddTime } from '../state/StateProvider';
 const Arrow = ({ id, type }) => {
     const arrowClass = type === 'UP'
         ? 'fa-solid fa-arrow-up-long mr-1 hover:opacity-50'
         : 'fa-solid fa-arrow-down-long mr-1 hover:opacity-50';
-    const addTime = useAppState();
+    const addTime = useAddTime();
     const handleClick = () => {
         console.log('CLICKED:', id);
         console.log('ADDTIME:', addTime);
