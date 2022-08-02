@@ -7,8 +7,8 @@ export interface IState {
 
 export type StateContextType = {
   state: IState;
-  addTime?: () => void;
-  subtractTime?: () => void;
+  addTime: () => void;
+  subtractTime: () => void;
 }
 
 const defaultState: IState = {
