@@ -1,28 +1,21 @@
 import { createContext, useContext, useState } from 'react';
 import defaultState from './state';
-const StateContext = createContext(null);
-// const AddTimeContext = createContext({})
+const StateContext = createContext(defaultState);
+const AddTimeContext = createContext(undefined);
 export const useAppState = () => useContext(StateContext);
-// export const useAddTime = () => useContext(AddTimeContext) as StateContextType;
+export const useAddTime = () => useContext(AddTimeContext);
 export const StateProvider = ({ children }) => {
     const [state, setState] = useState(defaultState);
     const addTime = () => {
-        console.log('ADDtest');
+        console.log('test');
         setState((prev) => ({
             ...prev,
-            minutes: prev.minutes += 1,
-        }));
-    };
-    const subtractTime = () => {
-        console.log('SUBtest');
-        setState((prev) => ({
-            ...prev,
-            minutes: prev.minutes -= 1,
+            minutes: (prev.minutes += 1),
         }));
     };
     return (<StateContext.Provider value={state}>
-      {/* <AddTimeContext.Provider value={{state, addTime}}> */}
-      {children}
-      {/* </AddTimeContext.Provider> */}
+      <AddTimeContext.Provider value={{ state, addTime }}>
+        {children}
+      </AddTimeContext.Provider>
     </StateContext.Provider>);
 };
