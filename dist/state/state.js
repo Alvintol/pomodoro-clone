@@ -3,6 +3,9 @@ const defaultState = {
     seconds: 0,
     option: 'session',
     play: false,
-    lastBreak: 'long'
+    lastBreak: 'long',
+    session: 25,
+    short: 5,
+    long: 15
 };
 export default defaultState;

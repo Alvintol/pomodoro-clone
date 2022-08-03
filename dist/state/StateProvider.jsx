@@ -3,7 +3,7 @@ import { OptionContext, PlayContext, StateContext, TimeContext, } from './contex
 import defaultState from './state';
 export const StateProvider = ({ children }) => {
     const [state, setState] = useState(defaultState);
-    const { minutes, seconds, play, option } = state;
+    const { minutes, seconds, option, play, lastBreak } = state;
     // Options
     const changeOption = (choice) => setState((prev) => ({ ...prev, option: choice }));
     // Time
@@ -36,8 +36,24 @@ export const StateProvider = ({ children }) => {
                             isSession();
                         }
                         if (option === 'session') {
-                            changeOption('short');
-                            isShort();
+                            if (lastBreak === 'long') {
+                                setState((prev) => ({
+                                    ...prev,
+                                    minutes: 5,
+                                    seconds: 0,
+                                    option: 'short',
+                                    lastBreak: 'short',
+                                }));
+                            }
+                            else {
+                                setState((prev) => ({
+                                    ...prev,
+                                    minutes: 15,
+                                    seconds: 0,
+                                    option: 'long',
+                                    lastBreak: 'long',
+                                }));
+                            }
                         }
                     }
                 }
@@ -47,7 +63,7 @@ export const StateProvider = ({ children }) => {
             }, 1000);
             return () => clearInterval(interval);
         }
-    }, [seconds, minutes, option, play]);
+    }, [seconds, minutes, option, play, lastBreak]);
     // Controls
     const togglePlay = () => {
         setState((prev) => ({
@@ -65,7 +81,8 @@ export const StateProvider = ({ children }) => {
                 time = 15;
                 break;
             default:
-                return;
+                time = 25;
+                break;
         }
         setState((prev) => ({ ...prev, minutes: time, seconds: 0, play: false }));
     };

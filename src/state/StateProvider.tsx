@@ -9,7 +9,7 @@ import defaultState, { IState } from './state';
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<IState>(defaultState);
-  const { minutes, seconds, play, option } = state;
+  const { minutes, seconds, option, play, lastBreak } = state;
 
   // Options
 
@@ -23,6 +23,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
       ...prev,
       minutes: prev.minutes++,
     }));
+
 
   const subtractTime = (): void =>
     setState((prev) => ({
@@ -39,35 +40,56 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
   const isLong = (): void =>
     setState((prev): IState => ({ ...prev, minutes: 15, seconds: 0 }));
 
-  useEffect(() => {
+  useEffect((): (() => void) | undefined => {
     if (play) {
-      const interval = setInterval(() => {
+      const interval = setInterval((): void => {
         clearInterval(interval);
 
         if (seconds < 1) {
           if (minutes >= 1) {
-            setState((prev) => ({
-              ...prev,
-              minutes: prev.minutes--,
-              seconds: 59,
-            }));
+            setState(
+              (prev): IState => ({
+                ...prev,
+                minutes: prev.minutes--,
+                seconds: 59,
+              })
+            );
           } else {
             if (option !== 'session') {
               changeOption('session');
               isSession();
             }
             if (option === 'session') {
-              changeOption('short');
-              isShort();
+              if (lastBreak === 'long') {
+                setState(
+                  (prev): IState => ({
+                    ...prev,
+                    minutes: 5,
+                    seconds: 0,
+                    option: 'short',
+                    lastBreak: 'short',
+                  })
+                );
+              } else {
+                setState(
+                  (prev): IState => ({
+                    ...prev,
+                    minutes: 15,
+                    seconds: 0,
+                    option: 'long',
+                    lastBreak: 'long',
+                  })
+                );
+              }
             }
           }
         } else {
-          setState((prev) => ({ ...prev, seconds: prev.seconds-- }));
+          setState((prev): IState => ({ ...prev, seconds: prev.seconds-- }));
         }
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [seconds, minutes, option, play]);
+  }, [seconds, minutes, option, play, lastBreak]);
 
   // Controls
 
@@ -91,9 +113,12 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         time = 15;
         break;
       default:
-        return;
+        time = 25;
+        break;
     }
-    setState((prev) => ({ ...prev, minutes: time, seconds: 0, play: false }));
+    setState(
+      (prev): IState => ({ ...prev, minutes: time, seconds: 0, play: false })
+    );
   };
 
   return (
