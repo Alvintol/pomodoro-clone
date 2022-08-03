@@ -5,8 +5,7 @@ export interface IState {
   timer: string;
 }
 
-export type StateContextType = {
-  state: IState;
+export type MinuteContextType = {
   addTime: () => void;
   subtractTime: () => void;
 }

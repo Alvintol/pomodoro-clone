@@ -1,13 +1,13 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
-import defaultState, { StateContextType, IState } from './state';
+import defaultState, { MinuteContextType, IState } from './state';
 
 const StateContext = createContext<IState>(defaultState);
-export const AddTimeContext = createContext<StateContextType | undefined>(
+export const TimeContext = createContext<MinuteContextType | undefined>(
   undefined
 );
 
 export const useAppState = () => useContext(StateContext);
-export const useAddTime = () => useContext(AddTimeContext);
+export const useAddTime = () => useContext(TimeContext);
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<IState>(defaultState);
@@ -30,9 +30,9 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <StateContext.Provider value={state}>
-      <AddTimeContext.Provider value={{ state, addTime, subtractTime }}>
+      <TimeContext.Provider value={{ addTime, subtractTime }}>
         {children}
-      </AddTimeContext.Provider>
+      </TimeContext.Provider>
     </StateContext.Provider>
   );
 };

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AddTimeContext, useAddTime } from '../state/StateProvider';
+import { TimeContext, useAddTime } from '../state/StateProvider';
 
 interface arrowBtn {
   id: string;
@@ -12,11 +12,9 @@ const Arrow = ({ id, type }: arrowBtn) => {
       ? 'fa-solid fa-arrow-up-long mr-1 hover:opacity-50'
       : 'fa-solid fa-arrow-down-long mr-1 hover:opacity-50';
 
-  const timeContext = useContext(AddTimeContext);
+  const timeContext = useContext(TimeContext);
 
   const handleClick = () => {
-    console.log('CLICKED:', id);
-    console.log('ADDTIME:', timeContext?.addTime);
     timeContext?.addTime();
   };
 

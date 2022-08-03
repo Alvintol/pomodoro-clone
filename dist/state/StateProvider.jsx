@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from 'react';
 import defaultState from './state';
 const StateContext = createContext(defaultState);
-export const AddTimeContext = createContext(undefined);
+export const TimeContext = createContext(undefined);
 export const useAppState = () => useContext(StateContext);
-export const useAddTime = () => useContext(AddTimeContext);
+export const useAddTime = () => useContext(TimeContext);
 export const StateProvider = ({ children }) => {
     const [state, setState] = useState(defaultState);
     const addTime = () => {
@@ -21,8 +21,8 @@ export const StateProvider = ({ children }) => {
         }));
     };
     return (<StateContext.Provider value={state}>
-      <AddTimeContext.Provider value={{ state, addTime, subtractTime }}>
+      <TimeContext.Provider value={{ addTime, subtractTime }}>
         {children}
-      </AddTimeContext.Provider>
+      </TimeContext.Provider>
     </StateContext.Provider>);
 };
