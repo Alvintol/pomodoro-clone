@@ -1,9 +1,14 @@
+import { useContext } from 'react';
+import { PlayContext } from '../state/context';
+
 interface ControlBtn {
   id: string;
 }
 
 const Control = ({ id }: ControlBtn) => {
   
+  const play = useContext(PlayContext);
+
   const iconClass = () => {
     switch (id) {
       case 'START':
@@ -15,7 +20,16 @@ const Control = ({ id }: ControlBtn) => {
     }
   };
 
-  return <i data-testid='control' id={id} className={iconClass()}></i>;
+  const handleClick = () => {
+    play?.togglePlay()
+  }
+
+  return <i 
+  data-testid='control' 
+  id={id} 
+  className={iconClass()}
+  onClick={handleClick}
+  ></i>;
 };
 
 export default Control;
