@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StateContext, TimeContext } from './context';
+import { OptionContext, StateContext, TimeContext } from './context';
 import defaultState from './state';
 export const StateProvider = ({ children }) => {
     const [state, setState] = useState(defaultState);
@@ -20,7 +20,9 @@ export const StateProvider = ({ children }) => {
     };
     return (<StateContext.Provider value={state}>
       <TimeContext.Provider value={{ addTime, subtractTime }}>
-        {children}
+        <OptionContext.Provider value={{ changeOption }}>
+          {children}
+        </OptionContext.Provider>
       </TimeContext.Provider>
     </StateContext.Provider>);
 };

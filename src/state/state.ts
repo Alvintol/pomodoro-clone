@@ -11,7 +11,7 @@ export type MinuteContextType = {
 }
 
 export type OptionContextType = {
-  changeOption: () => void;
+  changeOption: (choice: string) => void;
 }
 
 const defaultState: IState = {
