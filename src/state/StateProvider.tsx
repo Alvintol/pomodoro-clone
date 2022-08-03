@@ -9,20 +9,22 @@ export const TimeContext = createContext<MinuteContextType | undefined>(
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<IState>(defaultState);
 
-  const addTime = () => {
-    console.log('ADDtest');
+  const addTime = ():void => {
     setState((prev) => ({
       ...prev,
-      minutes: (prev.minutes++),
+      minutes: prev.minutes++,
     }));
   };
 
-  const subtractTime = () => {
-    console.log('SUBtest');
+  const subtractTime = ():void => {
     setState((prev) => ({
       ...prev,
-      minutes: (prev.minutes--),
+      minutes: prev.minutes--,
     }));
+  };
+
+  const changeOption = (choice: string): void => {
+    setState((prev)=> ({...prev, option: choice}))
   };
 
   return (

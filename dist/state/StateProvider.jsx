@@ -5,18 +5,19 @@ export const TimeContext = createContext(undefined);
 export const StateProvider = ({ children }) => {
     const [state, setState] = useState(defaultState);
     const addTime = () => {
-        console.log('ADDtest');
         setState((prev) => ({
             ...prev,
-            minutes: (prev.minutes++),
+            minutes: prev.minutes++,
         }));
     };
     const subtractTime = () => {
-        console.log('SUBtest');
         setState((prev) => ({
             ...prev,
-            minutes: (prev.minutes--),
+            minutes: prev.minutes--,
         }));
+    };
+    const changeOption = (choice) => {
+        setState((prev) => ({ ...prev, option: choice }));
     };
     return (<StateContext.Provider value={state}>
       <TimeContext.Provider value={{ addTime, subtractTime }}>
