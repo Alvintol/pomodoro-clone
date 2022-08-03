@@ -82,7 +82,6 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
   const setReset = (option: string): void => {
     let time: number = 25;
-    console.log('test')
 
     switch (option) {
       case 'short':

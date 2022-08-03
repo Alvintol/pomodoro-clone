@@ -3,6 +3,7 @@ export interface IState {
   seconds: number;
   option: string;
   play: boolean;
+  lastBreak: string;
 }
 
 export type MinuteContextType = {
@@ -27,6 +28,7 @@ const defaultState: IState = {
   seconds: 0,
   option: 'session',
   play: false,
+  lastBreak: 'long'
 };
 
 export default defaultState;

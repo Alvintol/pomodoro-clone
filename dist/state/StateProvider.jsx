@@ -57,7 +57,6 @@ export const StateProvider = ({ children }) => {
     };
     const setReset = (option) => {
         let time = 25;
-        console.log('test');
         switch (option) {
             case 'short':
                 time = 5;
