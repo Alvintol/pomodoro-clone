@@ -12,12 +12,11 @@ const Arrow = ({ id, type }: arrowBtn) => {
       ? 'fa-solid fa-arrow-up-long mr-1 hover:opacity-50'
       : 'fa-solid fa-arrow-down-long mr-1 hover:opacity-50';
 
-  const timeContext = useContext(StateContext)
+  const timeContext = useContext(TimeContext);
 
-  const handleClick = (): void => {
-    timeContext?.addTime();
-  };
-
+  const handleClick = (): void =>
+    type === 'UP' ? timeContext?.addTime() : timeContext?.subtractTime();
+    
   return (
     <i
       data-testid='arrow'
