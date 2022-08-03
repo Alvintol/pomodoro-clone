@@ -1,8 +1,9 @@
+import { useContext } from 'react';
 import { isToggled } from '../helpers/helperFunctions';
-import { useAppState } from '../state/StateProvider';
+import { StateContext } from '../state/StateProvider';
 import Arrow from './Arrow';
 const Break = ({ id }) => {
-    const state = useAppState();
+    const state = useContext(StateContext);
     const { option } = state;
     const capitalize = (str) => {
         const strSplit = str.split('');

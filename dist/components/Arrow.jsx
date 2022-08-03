@@ -1,10 +1,9 @@
 import { useContext } from 'react';
-import { TimeContext } from '../state/StateProvider';
 const Arrow = ({ id, type }) => {
     const arrowClass = type === 'UP'
         ? 'fa-solid fa-arrow-up-long mr-1 hover:opacity-50'
         : 'fa-solid fa-arrow-down-long mr-1 hover:opacity-50';
-    const timeContext = useContext(TimeContext);
+    const timeContext = useContext(StateContext);
     const handleClick = () => {
         timeContext?.addTime();
     };

@@ -1,9 +1,10 @@
+import { useContext } from 'react';
 import { isToggled } from '../helpers/helperFunctions';
-import { useAppState } from '../state/StateProvider';
+import { StateContext } from '../state/StateProvider';
 
 const Session = () => {
 
-  const state = useAppState();
+  const state = useContext(StateContext)
   const {option} = state;
 
   const sessionClass = 'w-full md:w-1/3 rounded-md ' + isToggled('session', option)

@@ -1,6 +1,7 @@
-import { useAppState } from '../state/StateProvider';
+import { useContext } from 'react';
+import { StateContext } from '../state/StateProvider';
 const Timer = () => {
-    const state = useAppState();
+    const state = useContext(StateContext);
     const { minutes, seconds } = state;
     const mins = minutes === 0 ? '00' : minutes;
     const secs = seconds === 0 ? '00' : seconds;

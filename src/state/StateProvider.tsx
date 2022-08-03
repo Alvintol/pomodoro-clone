@@ -1,13 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useState } from 'react';
 import defaultState, { MinuteContextType, IState } from './state';
 
-const StateContext = createContext<IState>(defaultState);
+export const StateContext = createContext<IState>(defaultState);
 export const TimeContext = createContext<MinuteContextType | undefined>(
   undefined
 );
-
-export const useAppState = () => useContext(StateContext);
-export const useAddTime = () => useContext(TimeContext);
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<IState>(defaultState);

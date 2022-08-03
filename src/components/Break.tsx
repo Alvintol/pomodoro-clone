@@ -1,5 +1,6 @@
+import { useContext } from 'react';
 import { isToggled } from '../helpers/helperFunctions';
-import { useAppState } from '../state/StateProvider';
+import { StateContext } from '../state/StateProvider';
 import Arrow from './Arrow';
 
 interface BreakOption {
@@ -7,7 +8,8 @@ interface BreakOption {
 }
 
 const Break = ({ id }: BreakOption) => {
-  const state = useAppState();
+
+  const state = useContext(StateContext);
   const { option } = state;
 
   const capitalize = (str: string) => {
