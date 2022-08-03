@@ -23,12 +23,16 @@ export const StateProvider = ({ children }) => {
             }, 60000);
         }
     };
-    const toggleSecondCount = () => {
+    const toggleSecondsCount = () => {
         while (seconds > 0) {
             setTimeout(() => {
                 setState((prev) => ({ ...prev, seconds: prev.seconds-- }));
             }, 1000);
         }
+    };
+    const toggleCountDown = () => {
+        toggleMinuteCount();
+        toggleSecondsCount();
     };
     // Options
     const changeOption = (choice) => setState((prev) => ({ ...prev, option: choice }));
@@ -59,7 +63,7 @@ export const StateProvider = ({ children }) => {
             isLong,
         }}>
         <OptionContext.Provider value={{ changeOption }}>
-          <PlayContext.Provider value={{ togglePlay, setReset }}>
+          <PlayContext.Provider value={{ togglePlay, setReset, toggleCountDown }}>
             {children}
           </PlayContext.Provider>
         </OptionContext.Provider>

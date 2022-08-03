@@ -36,7 +36,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
   const toggleMinuteCount = (): void => {
     while (minutes > 0) {
-      setTimeout(() => {
+      setTimeout((): void => {
         setState(
           (prev): IState => ({ ...prev, minutes: prev.minutes--, seconds: 59 })
         );
@@ -44,12 +44,17 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const toggleSecondCount = (): void => {
+  const toggleSecondsCount = (): void => {
     while (seconds > 0) {
-      setTimeout(() => {
+      setTimeout((): void => {
         setState((prev): IState => ({ ...prev, seconds: prev.seconds-- }));
       }, 1000);
     }
+  };
+
+  const toggleCountDown = (): void => {
+    toggleMinuteCount();
+    toggleSecondsCount();
   };
 
   // Options
@@ -91,7 +96,9 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         }}
       >
         <OptionContext.Provider value={{ changeOption }}>
-          <PlayContext.Provider value={{ togglePlay, setReset }}>
+          <PlayContext.Provider
+            value={{ togglePlay, setReset, toggleCountDown }}
+          >
             {children}
           </PlayContext.Provider>
         </OptionContext.Provider>
