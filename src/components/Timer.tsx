@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { StateContext } from '../state/StateProvider';
+import { StateContext } from '../state/context';
 
 const Timer = () => {
   const state = useContext(StateContext)

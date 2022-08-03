@@ -1,7 +1,6 @@
-import { createContext, useState } from 'react';
+import { useState } from 'react';
+import { StateContext, TimeContext } from './context';
 import defaultState from './state';
-export const StateContext = createContext(defaultState);
-export const TimeContext = createContext(undefined);
 export const StateProvider = ({ children }) => {
     const [state, setState] = useState(defaultState);
     const addTime = () => {

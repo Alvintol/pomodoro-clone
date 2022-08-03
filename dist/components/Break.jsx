@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { isToggled } from '../helpers/helperFunctions';
-import { StateContext } from '../state/StateProvider';
+import { StateContext } from '../state/context';
 import Arrow from './Arrow';
 const Break = ({ id }) => {
     const state = useContext(StateContext);

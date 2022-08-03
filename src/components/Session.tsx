@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { isToggled } from '../helpers/helperFunctions';
-import { StateContext } from '../state/StateProvider';
+import { StateContext } from '../state/context';
 
 const Session = () => {
 

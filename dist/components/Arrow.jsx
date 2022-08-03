@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { StateContext, TimeContext } from '../state/StateProvider';
+import { StateContext, TimeContext } from '../state/context';
 const Arrow = ({ id, type }) => {
     const state = useContext(StateContext);
     const defaultClass = 'fa-solid mr-1 hover:opacity-50';

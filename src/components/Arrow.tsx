@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { StateContext, TimeContext } from '../state/StateProvider';
+import { StateContext, TimeContext } from '../state/context';
 
 interface arrowBtn {
   id: string;
@@ -7,7 +7,7 @@ interface arrowBtn {
 }
 
 const Arrow = ({ id, type }: arrowBtn) => {
-  const state  = useContext(StateContext);
+  const  state  = useContext(StateContext);
 
   const defaultClass = 'fa-solid mr-1 hover:opacity-50';
   const arrowClass =
