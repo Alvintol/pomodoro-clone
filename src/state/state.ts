@@ -10,6 +10,10 @@ export type MinuteContextType = {
   subtractTime: () => void;
 }
 
+export type OptionContextType = {
+  changeOption: () => void;
+}
+
 const defaultState: IState = {
   minutes: 25,
   seconds: 0,
