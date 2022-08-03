@@ -1,11 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { OptionContext, PlayContext, StateContext, TimeContext, } from './context';
 import defaultState from './state';
 export const StateProvider = ({ children }) => {
     const [state, setState] = useState(defaultState);
     const { minutes, seconds, play, option } = state;
-    const secondsRef = useRef(seconds);
-    const minutesRef = useRef(minutes);
     // Options
     const changeOption = (choice) => setState((prev) => ({ ...prev, option: choice }));
     // Time
@@ -17,44 +15,19 @@ export const StateProvider = ({ children }) => {
         ...prev,
         minutes: prev.minutes--,
     }));
-    const isSession = () => setState((prev) => ({ ...prev, minutes: 25 }));
-    const isShort = () => setState((prev) => ({ ...prev, minutes: 5 }));
-    const isLong = () => setState((prev) => ({ ...prev, minutes: 15 }));
-    // const toggleMinuteCount = (): void => {
-    //   if (minutes > 0) {
-    //     // setInterval((): void => {
-    //     //   setState(
-    //     //     (prev): IState => ({ ...prev, minutes: prev.minutes--, seconds: 59 })
-    //     //   );
-    //     // }, 60000);
-    //     console.log('MINUTES')
-    //   }
-    // };
-    const toggleSecondsCount = () => {
-        // setState((prev) => ({
-        //   ...prev,
-        //   minutes: prev.minutes--,
-        //   seconds: 59,
-        // }));
-        // if (secondsRef === 0 ) return clearInterval()
-        if (secondsRef.current > 0) {
-            secondsRef.current--;
-            setInterval(() => {
-                setState((prev) => ({ ...prev, seconds: secondsRef.current }));
-            }, 1000);
-            console.log('SECONDS');
-        }
-    };
+    const isSession = () => setState((prev) => ({ ...prev, minutes: 25, seconds: 0 }));
+    const isShort = () => setState((prev) => ({ ...prev, minutes: 5, seconds: 0 }));
+    const isLong = () => setState((prev) => ({ ...prev, minutes: 15, seconds: 0 }));
     useEffect(() => {
         if (play) {
             const interval = setInterval(() => {
                 clearInterval(interval);
-                if (seconds === 0) {
-                    if (minutes !== 0) {
+                if (seconds < 1) {
+                    if (minutes >= 1) {
                         setState((prev) => ({
                             ...prev,
                             minutes: prev.minutes--,
-                            seconds: 3,
+                            seconds: 59,
                         }));
                     }
                     else {
@@ -72,6 +45,7 @@ export const StateProvider = ({ children }) => {
                     setState((prev) => ({ ...prev, seconds: prev.seconds-- }));
                 }
             }, 1000);
+            return () => clearInterval(interval);
         }
     }, [seconds, minutes, option, play]);
     // Controls
@@ -79,14 +53,11 @@ export const StateProvider = ({ children }) => {
         setState((prev) => ({
             ...prev,
             play: !prev.play,
-            minutes: 1,
-            seconds: 3,
         }));
-        // toggleMinuteCount();
-        toggleSecondsCount();
     };
     const setReset = (option) => {
         let time = 25;
+        console.log('test');
         switch (option) {
             case 'short':
                 time = 5;
@@ -97,7 +68,7 @@ export const StateProvider = ({ children }) => {
             default:
                 return;
         }
-        setState((prev) => ({ ...prev, minutes: time }));
+        setState((prev) => ({ ...prev, minutes: time, seconds: 0, play: false }));
     };
     return (<StateContext.Provider value={state}>
       <TimeContext.Provider value={{
