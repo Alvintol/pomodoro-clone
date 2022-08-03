@@ -30,6 +30,7 @@ export const StateProvider = ({ children }) => {
             isLong
         }}>
         <OptionContext.Provider value={{ changeOption }}>
+          <></>
           {children}
         </OptionContext.Provider>
       </TimeContext.Provider>

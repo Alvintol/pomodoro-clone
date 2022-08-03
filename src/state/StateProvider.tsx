@@ -51,6 +51,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         }}
       >
         <OptionContext.Provider value={{ changeOption }}>
+          <></>
           {children}
         </OptionContext.Provider>
       </TimeContext.Provider>
