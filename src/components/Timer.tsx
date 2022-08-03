@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { isOneMinute } from '../helpers/helperFunctions';
 import { StateContext } from '../state/context';
 
 const Timer = () => {
@@ -12,7 +13,8 @@ const Timer = () => {
     num.toString().length > 1 ? num : `0${num}`;
 
   const timerClass: string =
-    'flex flex-col justify-center h-1/2 font-bold text-[50px] sm:text-[75px] md:text-[125px]' + isOneMinute();
+    isOneMinute(minutes) +
+    ' flex flex-col justify-center h-1/2 font-bold text-[50px] sm:text-[75px] md:text-[125px]';
 
   return (
     <div data-testid='timer' id='timer' className={timerClass}>
