@@ -1,7 +1,7 @@
 import Break from './Break';
 import Session from './Session';
 const Options = () => {
-    const optionsClass = 'bg-pink flex flex-col items-center text-center rounded-md md:justify-around md:flex-row mx-3';
+    const optionsClass = 'flex flex-col items-center text-center rounded-md mx-3  md:justify-around md:flex-row ';
     return (<div data-testid='options' id='options' className={optionsClass}>
   <Session />
   <Break id='short'/>

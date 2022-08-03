@@ -13,7 +13,7 @@ export type MinuteContextType = {
 const defaultState: IState = {
   minutes: 25,
   seconds: 0,
-  option: 'session',
+  option: 'short',
   timer: 'OFF',
 };
 

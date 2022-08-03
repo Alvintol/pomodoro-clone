@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TimeContext } from '../state/StateProvider';
+import { StateContext, TimeContext } from '../state/StateProvider';
 
 interface arrowBtn {
   id: string;
@@ -7,16 +7,23 @@ interface arrowBtn {
 }
 
 const Arrow = ({ id, type }: arrowBtn) => {
+  const state  = useContext(StateContext);
+
+  const defaultClass = 'fa-solid mr-1 hover:opacity-50';
   const arrowClass =
     type === 'UP'
-      ? 'fa-solid fa-arrow-up-long mr-1 hover:opacity-50'
-      : 'fa-solid fa-arrow-down-long mr-1 hover:opacity-50';
+      ? ' fa-arrow-up-long ' + defaultClass
+      : ' fa-arrow-down-long ' + defaultClass;
 
   const timeContext = useContext(TimeContext);
 
-  const handleClick = (): void =>
-    type === 'UP' ? timeContext?.addTime() : timeContext?.subtractTime();
-    
+  const handleClick = (): void | null =>
+    type === 'UP'
+      ? timeContext?.addTime()
+      : state.minutes > 1
+      ? timeContext?.subtractTime()
+      : null;
+
   return (
     <i
       data-testid='arrow'

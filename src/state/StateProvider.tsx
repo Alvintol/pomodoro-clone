@@ -13,7 +13,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     console.log('ADDtest');
     setState((prev) => ({
       ...prev,
-      minutes: (prev.minutes += 1),
+      minutes: (prev.minutes++),
     }));
   };
 
@@ -21,7 +21,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     console.log('SUBtest');
     setState((prev) => ({
       ...prev,
-      minutes: (prev.minutes -= 1),
+      minutes: (prev.minutes--),
     }));
   };
 

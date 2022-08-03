@@ -8,14 +8,14 @@ export const StateProvider = ({ children }) => {
         console.log('ADDtest');
         setState((prev) => ({
             ...prev,
-            minutes: (prev.minutes += 1),
+            minutes: (prev.minutes++),
         }));
     };
     const subtractTime = () => {
         console.log('SUBtest');
         setState((prev) => ({
             ...prev,
-            minutes: (prev.minutes -= 1),
+            minutes: (prev.minutes--),
         }));
     };
     return (<StateContext.Provider value={state}>

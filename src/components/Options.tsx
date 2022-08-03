@@ -3,7 +3,7 @@ import Session from './Session';
 
 const Options = () => {
 
-const optionsClass: string = 'bg-pink flex flex-col items-center text-center rounded-md md:justify-around md:flex-row mx-3'
+const optionsClass: string = 'flex flex-col items-center text-center rounded-md mx-3  md:justify-around md:flex-row '
 
 return (
   <div
