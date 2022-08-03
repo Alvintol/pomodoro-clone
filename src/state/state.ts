@@ -2,15 +2,15 @@ export interface IState {
   minutes: number;
   seconds: number;
   option: string;
-  timer: string;
+  play: boolean;
 }
 
 export type MinuteContextType = {
   addTime: () => void;
   subtractTime: () => void;
   isSession: () => void;
-  isShortBreak: () => void;
-  isLongBreak: () => void;
+  isShort: () => void;
+  isLong: () => void;
 }
 
 export type OptionContextType = {
@@ -20,8 +20,8 @@ export type OptionContextType = {
 const defaultState: IState = {
   minutes: 25,
   seconds: 0,
-  option: 'short',
-  timer: 'OFF',
+  option: 'session',
+  play: false,
 };
 
 export default defaultState;

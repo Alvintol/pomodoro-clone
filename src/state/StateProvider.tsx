@@ -5,40 +5,50 @@ import defaultState, { IState } from './state';
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<IState>(defaultState);
 
-  const addTime = (): void => {
+  // Controls Time
+
+  const addTime = (): void =>
     setState((prev) => ({
       ...prev,
       minutes: prev.minutes++,
     }));
-  };
 
-  const subtractTime = (): void => {
+  const subtractTime = (): void =>
     setState((prev) => ({
       ...prev,
       minutes: prev.minutes--,
     }));
-  };
 
-  const changeOption = (choice: string): void => {
-    setState((prev) => ({ ...prev, option: choice }));
-  };
+  const isSession = (): void =>
+    setState((prev): IState => ({ ...prev, minutes: 25 }));
 
-  const isSession = (): void => {
-    setState((prev) => ({ ...prev, minutes: 25 }));
-  };
+  const isShort = (): void =>
+    setState((prev): IState => ({ ...prev, minutes: 5 }));
 
-  const isShortBreak = (): void => {
-    setState((prev) => ({ ...prev, minutes: 5 }));
-  };
+  const isLong = (): void =>
+    setState((prev): IState => ({ ...prev, minutes: 15 }));
 
-  const isLongBreak = (): void => {
-    setState((prev) => ({ ...prev, minutes: 15 }));
+  // Controls Option
+
+  const changeOption = (choice: string): void =>
+    setState((prev): IState => ({ ...prev, option: choice }));
+
+  // Controls Timer
+
+  const togglePlay = (): void => {
+    setState((prev): IState => ({ ...prev, play: !prev.play }));
   };
 
   return (
     <StateContext.Provider value={state}>
       <TimeContext.Provider
-        value={{ addTime, subtractTime, isSession, isShortBreak, isLongBreak }}
+        value={{
+          addTime,
+          subtractTime,
+          isSession,
+          isShort,
+          isLong
+        }}
       >
         <OptionContext.Provider value={{ changeOption }}>
           {children}

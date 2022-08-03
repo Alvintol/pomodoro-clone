@@ -7,7 +7,8 @@ interface arrowBtn {
 }
 
 const Arrow = ({ id, type }: arrowBtn) => {
-  const  state  = useContext(StateContext);
+  const state = useContext(StateContext);
+  const timeContext = useContext(TimeContext);
 
   const defaultClass = 'fa-solid mr-1 hover:opacity-50';
   const arrowClass =
@@ -15,14 +16,13 @@ const Arrow = ({ id, type }: arrowBtn) => {
       ? ' fa-arrow-up-long ' + defaultClass
       : ' fa-arrow-down-long ' + defaultClass;
 
-  const timeContext = useContext(TimeContext);
-
-  const handleClick = (): void | null =>
-    type === 'UP'
+  const handleClick = (): void | null => {
+    return type === 'UP'
       ? timeContext?.addTime()
       : state.minutes > 1
       ? timeContext?.subtractTime()
       : null;
+  };
 
   return (
     <i
