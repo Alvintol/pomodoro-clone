@@ -11,15 +11,16 @@ export type MinuteContextType = {
   isSession: () => void;
   isShort: () => void;
   isLong: () => void;
-}
+};
 
 export type OptionContextType = {
   changeOption: (choice: string) => void;
-}
+};
 
 export type PlayContextType = {
   togglePlay: () => void;
-}
+  setReset: (option: string) => void;
+};
 
 const defaultState: IState = {
   minutes: 25,

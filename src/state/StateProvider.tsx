@@ -44,6 +44,22 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     setState((prev): IState => ({ ...prev, play: !prev.play }));
   };
 
+  const setReset = (option: string): void => {
+    let time: number = 25;
+
+    switch (option) {
+      case 'short':
+        time = 5;
+        break;
+      case 'long':
+        time = 15;
+        break;
+      default:
+        return;
+    }
+    setState((prev) => ({ ...prev, minutes: time }));
+  };
+
   return (
     <StateContext.Provider value={state}>
       <TimeContext.Provider
@@ -56,7 +72,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         }}
       >
         <OptionContext.Provider value={{ changeOption }}>
-          <PlayContext.Provider value={{ togglePlay }}>
+          <PlayContext.Provider value={{ togglePlay, setReset }}>
             {children}
           </PlayContext.Provider>
         </OptionContext.Provider>

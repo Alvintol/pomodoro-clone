@@ -1,7 +1,9 @@
 import { useContext } from 'react';
-import { PlayContext } from '../state/context';
+import { PlayContext, StateContext } from '../state/context';
 const Control = ({ id }) => {
+    const state = useContext(StateContext);
     const play = useContext(PlayContext);
+    const { option } = state;
     const iconClass = () => {
         switch (id) {
             case 'START':
@@ -13,8 +15,8 @@ const Control = ({ id }) => {
         }
     };
     const handleClick = () => {
-        play?.togglePlay();
+        id === 'RESET' ? play?.setReset(option) : play?.togglePlay();
     };
-    return <i data-testid='control' id={id} className={iconClass()} onClick={handleClick}></i>;
+    return (<i data-testid='control' id={id} className={iconClass()} onClick={handleClick}></i>);
 };
 export default Control;

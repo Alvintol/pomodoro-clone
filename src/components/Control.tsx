@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PlayContext } from '../state/context';
+import { PlayContext, StateContext } from '../state/context';
 
 interface ControlBtn {
   id: string;
@@ -7,7 +7,9 @@ interface ControlBtn {
 
 const Control = ({ id }: ControlBtn) => {
   
+  const state = useContext(StateContext);
   const play = useContext(PlayContext);
+  const { option } = state;
 
   const iconClass = () => {
     switch (id) {
@@ -21,15 +23,17 @@ const Control = ({ id }: ControlBtn) => {
   };
 
   const handleClick = () => {
-    play?.togglePlay()
-  }
+    id === 'RESET' ? play?.setReset(option) : play?.togglePlay();
+  };
 
-  return <i 
-  data-testid='control' 
-  id={id} 
-  className={iconClass()}
-  onClick={handleClick}
-  ></i>;
+  return (
+    <i
+      data-testid='control'
+      id={id}
+      className={iconClass()}
+      onClick={handleClick}
+    ></i>
+  );
 };
 
 export default Control;
