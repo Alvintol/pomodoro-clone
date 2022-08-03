@@ -17,6 +17,10 @@ export type OptionContextType = {
   changeOption: (choice: string) => void;
 }
 
+export type PlayContextType = {
+  togglePlay: () => void;
+}
+
 const defaultState: IState = {
   minutes: 25,
   seconds: 0,
