@@ -8,6 +8,9 @@ export interface IState {
 export type MinuteContextType = {
   addTime: () => void;
   subtractTime: () => void;
+  isSession: () => void;
+  isShortBreak: () => void;
+  isLongBreak: () => void;
 }
 
 export type OptionContextType = {

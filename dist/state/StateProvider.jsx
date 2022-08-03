@@ -18,6 +18,9 @@ export const StateProvider = ({ children }) => {
     const changeOption = (choice) => {
         setState((prev) => ({ ...prev, option: choice }));
     };
+    const isSession = () => {
+        setState((prev) => ({ ...prev, minutes: 25 }));
+    };
     const isShortBreak = () => {
         setState((prev) => ({ ...prev, minutes: 5 }));
     };
@@ -25,7 +28,7 @@ export const StateProvider = ({ children }) => {
         setState((prev) => ({ ...prev, minutes: 15 }));
     };
     return (<StateContext.Provider value={state}>
-      <TimeContext.Provider value={{ addTime, subtractTime }}>
+      <TimeContext.Provider value={{ addTime, subtractTime, isSession, isShortBreak, isLongBreak }}>
         <OptionContext.Provider value={{ changeOption }}>
           {children}
         </OptionContext.Provider>

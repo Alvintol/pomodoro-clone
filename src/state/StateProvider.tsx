@@ -23,17 +23,23 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     setState((prev) => ({ ...prev, option: choice }));
   };
 
-  const isShortBreak = () => {
+  const isSession = (): void => {
+    setState((prev) => ({ ...prev, minutes: 25 }));
+  };
+
+  const isShortBreak = (): void => {
     setState((prev) => ({ ...prev, minutes: 5 }));
   };
 
-  const isLongBreak = () => {
+  const isLongBreak = (): void => {
     setState((prev) => ({ ...prev, minutes: 15 }));
   };
 
   return (
     <StateContext.Provider value={state}>
-      <TimeContext.Provider value={{ addTime, subtractTime }}>
+      <TimeContext.Provider
+        value={{ addTime, subtractTime, isSession, isShortBreak, isLongBreak }}
+      >
         <OptionContext.Provider value={{ changeOption }}>
           {children}
         </OptionContext.Provider>

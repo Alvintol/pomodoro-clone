@@ -12,6 +12,7 @@ const Session = () => {
 
   const handleClick = (): void => {
     select?.changeOption('session');
+    
   };
 
   return (
