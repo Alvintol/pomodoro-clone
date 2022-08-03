@@ -23,6 +23,14 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     setState((prev) => ({ ...prev, option: choice }));
   };
 
+  const isShortBreak = () => {
+    setState((prev) => ({ ...prev, minutes: 5 }));
+  };
+
+  const isLongBreak = () => {
+    setState((prev) => ({ ...prev, minutes: 15 }));
+  };
+
   return (
     <StateContext.Provider value={state}>
       <TimeContext.Provider value={{ addTime, subtractTime }}>

@@ -18,6 +18,12 @@ export const StateProvider = ({ children }) => {
     const changeOption = (choice) => {
         setState((prev) => ({ ...prev, option: choice }));
     };
+    const isShortBreak = () => {
+        setState((prev) => ({ ...prev, minutes: 5 }));
+    };
+    const isLongBreak = () => {
+        setState((prev) => ({ ...prev, minutes: 15 }));
+    };
     return (<StateContext.Provider value={state}>
       <TimeContext.Provider value={{ addTime, subtractTime }}>
         <OptionContext.Provider value={{ changeOption }}>
