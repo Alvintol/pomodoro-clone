@@ -9,8 +9,9 @@ import defaultState, { IState } from './state';
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<IState>(defaultState);
+  const { minutes, seconds } = state;
 
-  // Controls Time
+  // Time
 
   const addTime = (): void =>
     setState((prev) => ({
@@ -33,12 +34,30 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
   const isLong = (): void =>
     setState((prev): IState => ({ ...prev, minutes: 15 }));
 
-  // Controls Option
+  const toggleMinuteCount = (): void => {
+    while (minutes > 0) {
+      setTimeout(() => {
+        setState(
+          (prev): IState => ({ ...prev, minutes: prev.minutes--, seconds: 59 })
+        );
+      }, 60000);
+    }
+  };
+
+  const toggleSecondCount = (): void => {
+    while (seconds > 0) {
+      setTimeout(() => {
+        setState((prev): IState => ({ ...prev, seconds: prev.seconds-- }));
+      }, 1000);
+    }
+  };
+
+  // Options
 
   const changeOption = (choice: string): void =>
     setState((prev): IState => ({ ...prev, option: choice }));
 
-  // Controls Timer
+  // Controls
 
   const togglePlay = (): void => {
     setState((prev): IState => ({ ...prev, play: !prev.play }));

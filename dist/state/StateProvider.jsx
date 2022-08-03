@@ -3,7 +3,8 @@ import { OptionContext, PlayContext, StateContext, TimeContext, } from './contex
 import defaultState from './state';
 export const StateProvider = ({ children }) => {
     const [state, setState] = useState(defaultState);
-    // Controls Time
+    const { minutes, seconds } = state;
+    // Time
     const addTime = () => setState((prev) => ({
         ...prev,
         minutes: prev.minutes++,
@@ -15,9 +16,23 @@ export const StateProvider = ({ children }) => {
     const isSession = () => setState((prev) => ({ ...prev, minutes: 25 }));
     const isShort = () => setState((prev) => ({ ...prev, minutes: 5 }));
     const isLong = () => setState((prev) => ({ ...prev, minutes: 15 }));
-    // Controls Option
+    const toggleMinuteCount = () => {
+        while (minutes > 0) {
+            setTimeout(() => {
+                setState((prev) => ({ ...prev, minutes: prev.minutes--, seconds: 59 }));
+            }, 60000);
+        }
+    };
+    const toggleSecondCount = () => {
+        while (seconds > 0) {
+            setTimeout(() => {
+                setState((prev) => ({ ...prev, seconds: prev.seconds-- }));
+            }, 1000);
+        }
+    };
+    // Options
     const changeOption = (choice) => setState((prev) => ({ ...prev, option: choice }));
-    // Controls Timer
+    // Controls
     const togglePlay = () => {
         setState((prev) => ({ ...prev, play: !prev.play }));
     };
