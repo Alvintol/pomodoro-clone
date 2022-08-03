@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import {
   OptionContext,
   PlayContext,
@@ -9,7 +9,15 @@ import defaultState, { IState } from './state';
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<IState>(defaultState);
-  const { minutes, seconds } = state;
+  const { minutes, seconds, play, option } = state;
+
+  const secondsRef = useRef(seconds);
+  const minutesRef = useRef(minutes);
+
+  // Options
+
+  const changeOption = (choice: string): void =>
+    setState((prev): IState => ({ ...prev, option: choice }));
 
   // Time
 
@@ -34,38 +42,74 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
   const isLong = (): void =>
     setState((prev): IState => ({ ...prev, minutes: 15 }));
 
-  const toggleMinuteCount = (): void => {
-    while (minutes > 0) {
-      setTimeout((): void => {
-        setState(
-          (prev): IState => ({ ...prev, minutes: prev.minutes--, seconds: 59 })
-        );
-      }, 60000);
+  // const toggleMinuteCount = (): void => {
+  //   if (minutes > 0) {
+  //     // setInterval((): void => {
+  //     //   setState(
+  //     //     (prev): IState => ({ ...prev, minutes: prev.minutes--, seconds: 59 })
+  //     //   );
+  //     // }, 60000);
+  //     console.log('MINUTES')
+  //   }
+  // };
+
+  const toggleSecondsCount = () => {
+    // setState((prev) => ({
+    //   ...prev,
+    //   minutes: prev.minutes--,
+    //   seconds: 59,
+    // }));
+    // if (secondsRef === 0 ) return clearInterval()
+    if (secondsRef.current > 0) {
+      secondsRef.current--;
+      setInterval((): void => {
+        setState((prev): IState => ({ ...prev, seconds: secondsRef.current }));
+      }, 1000);
+      console.log('SECONDS');
     }
   };
 
-  const toggleSecondsCount = (): void => {
-    while (seconds > 0) {
-      setTimeout((): void => {
-        setState((prev): IState => ({ ...prev, seconds: prev.seconds-- }));
+  useEffect(() => {
+    if (play) {
+      const interval = setInterval(() => {
+        clearInterval(interval);
+        if (seconds === 0) {
+          if (minutes !== 0) {
+            setState((prev) => ({
+              ...prev,
+              minutes: prev.minutes--,
+              seconds: 3,
+            }));
+          } else {
+            if (option !== 'session') {
+              changeOption('session');
+              isSession();
+            }
+            if (option === 'session') {
+              changeOption('short');
+              isShort();
+            }
+          }
+        } else {
+          setState((prev) => ({ ...prev, seconds: prev.seconds-- }));
+        }
       }, 1000);
     }
-  };
-
-  const toggleCountDown = (): void => {
-    toggleMinuteCount();
-    toggleSecondsCount();
-  };
-
-  // Options
-
-  const changeOption = (choice: string): void =>
-    setState((prev): IState => ({ ...prev, option: choice }));
+  }, [seconds, minutes, option, play]);
 
   // Controls
 
   const togglePlay = (): void => {
-    setState((prev): IState => ({ ...prev, play: !prev.play }));
+    setState(
+      (prev): IState => ({
+        ...prev,
+        play: !prev.play,
+        minutes: 1,
+        seconds: 3,
+      })
+    );
+    // toggleMinuteCount();
+    toggleSecondsCount();
   };
 
   const setReset = (option: string): void => {
@@ -96,9 +140,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         }}
       >
         <OptionContext.Provider value={{ changeOption }}>
-          <PlayContext.Provider
-            value={{ togglePlay, setReset, toggleCountDown }}
-          >
+          <PlayContext.Provider value={{ togglePlay, setReset }}>
             {children}
           </PlayContext.Provider>
         </OptionContext.Provider>

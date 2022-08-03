@@ -20,7 +20,6 @@ export type OptionContextType = {
 export type PlayContextType = {
   togglePlay: () => void;
   setReset: (option: string) => void;
-  toggleCountDown: () => void;
 };
 
 const defaultState: IState = {
