@@ -1,11 +1,10 @@
 import { useContext } from 'react';
 import { isToggled } from '../helpers/helperFunctions';
-import { OptionContext, StateContext, TimeContext } from '../state/context';
+import { StateContext, TimeContext } from '../state/context';
 import Arrow from './Arrow';
 
 const Session = () => {
   const state = useContext(StateContext);
-  const select = useContext(OptionContext);
   const time = useContext(TimeContext);
   const { option } = state;
 
@@ -15,7 +14,6 @@ const Session = () => {
 
   const handleClick = (): void | null => {
     if (option === 'session') return null;
-    select?.changeOption('session');
     time?.isSession('session');
   };
 

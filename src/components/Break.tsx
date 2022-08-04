@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { isToggled } from '../helpers/helperFunctions';
-import { OptionContext, StateContext, TimeContext } from '../state/context';
+import { StateContext, TimeContext } from '../state/context';
 import Arrow from './Arrow';
 
 interface BreakOption {
@@ -9,7 +9,6 @@ interface BreakOption {
 
 const Break = ({ id }: BreakOption) => {
   const state = useContext(StateContext);
-  const select = useContext(OptionContext);
   const time = useContext(TimeContext);
   const { option } = state;
 
@@ -22,7 +21,6 @@ const Break = ({ id }: BreakOption) => {
 
   const handleClick = (): void | null => {
     if (id === option) return null;
-    select?.changeOption(id);
     id === 'short' ? time?.isShort(id) : time?.isLong(id);
   };
 

@@ -17,10 +17,6 @@ export type MinuteContextType = {
   isLong: (id: string) => void;
 };
 
-export type OptionContextType = {
-  changeOption: (choice: string) => void;
-};
-
 export type PlayContextType = {
   togglePlay: () => void;
   setReset: (option: string) => void;

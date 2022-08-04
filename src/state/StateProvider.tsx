@@ -1,6 +1,5 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import {
-  OptionContext,
   PlayContext,
   StateContext,
   TimeContext,
@@ -26,11 +25,6 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     });
     sound.play();
   };
-
-  // Options
-
-  const changeOption = (choice: string): void =>
-    setState((prev): IState => ({ ...prev, option: choice }));
 
   // Time
 
@@ -98,14 +92,46 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const isSession = (): void =>
-    setState((prev): IState => ({ ...prev, minutes: session, seconds: 0 }));
+  const isSession = useCallback(
+    (): void =>
+      setState(
+        (prev): IState => ({
+          ...prev,
+          minutes: session,
+          seconds: 0,
+          option: 'session',
+        })
+      ),
+    [session]
+  );
 
-  const isShort = (): void =>
-    setState((prev): IState => ({ ...prev, minutes: short, seconds: 0 }));
+  const isShort = useCallback(
+    (): void =>
+      setState(
+        (prev): IState => ({
+          ...prev,
+          minutes: short,
+          seconds: 0,
+          option: 'short',
+          lastBreak: 'short',
+        })
+      ),
+    [short]
+  );
 
-  const isLong = (): void =>
-    setState((prev): IState => ({ ...prev, minutes: long, seconds: 0 }));
+  const isLong = useCallback(
+    (): void =>
+      setState(
+        (prev): IState => ({
+          ...prev,
+          minutes: long,
+          seconds: 0,
+          option: 'long',
+          lastBreak: 'long',
+        })
+      ),
+    [long]
+  );
 
   useEffect((): (() => void) | undefined => {
     if (play) {
@@ -124,36 +150,13 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
           } else {
             playSound();
             if (option !== 'session') {
-              setState(
-                (prev): IState => ({
-                  ...prev,
-                  minutes: session,
-                  seconds: 0,
-                  option: 'session',
-                })
-              );
+              isSession();
             }
             if (option === 'session') {
               if (lastBreak === 'long') {
-                setState(
-                  (prev): IState => ({
-                    ...prev,
-                    minutes: short,
-                    seconds: 0,
-                    option: 'short',
-                    lastBreak: 'short',
-                  })
-                );
+                isShort();
               } else {
-                setState(
-                  (prev): IState => ({
-                    ...prev,
-                    minutes: long,
-                    seconds: 0,
-                    option: 'long',
-                    lastBreak: 'long',
-                  })
-                );
+                isLong();
               }
             }
           }
@@ -163,7 +166,19 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [seconds, minutes, option, play, lastBreak, session, short, long]);
+  }, [
+    seconds,
+    minutes,
+    option,
+    play,
+    lastBreak,
+    session,
+    short,
+    long,
+    isSession,
+    isShort,
+    isLong,
+  ]);
 
   // Controls
 
@@ -217,19 +232,22 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
   useKey('ArrowUp', (event: any) => {
     if (event?.key === 'ArrowUp') {
-      addTime(option)
+      addTime(option);
     }
   });
 
   useKey('ArrowDown', (event: any) => {
     if (event?.key === 'ArrowDown') {
-      subtractTime(option)
+      subtractTime(option);
     }
   });
 
   useKey('Tab', (event: any) => {
     if (event?.key === 'Tab') {
       console.log(event?.key);
+      if (option === 'short') {
+        isLong();
+      }
     }
   });
 
@@ -244,11 +262,9 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
           isLong,
         }}
       >
-        <OptionContext.Provider value={{ changeOption }}>
-          <PlayContext.Provider value={{ togglePlay, setReset }}>
-            {children}
-          </PlayContext.Provider>
-        </OptionContext.Provider>
+        <PlayContext.Provider value={{ togglePlay, setReset }}>
+          {children}
+        </PlayContext.Provider>
       </TimeContext.Provider>
     </StateContext.Provider>
   );
