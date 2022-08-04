@@ -5,12 +5,24 @@ import {
   StateContext,
   TimeContext,
 } from './context';
+import {Howl} from 'howler';
 import defaultState, { IState } from './state';
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<IState>(defaultState);
   const { minutes, seconds, option, play, lastBreak, session, short, long } =
     state;
+
+  // Sound
+
+  const playSound = () => {
+    const sound = new Howl({
+      src: ['https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav'],
+      html5: true,
+      volume: 0.5
+    });
+    sound.play()
+  }
 
   // Options
 

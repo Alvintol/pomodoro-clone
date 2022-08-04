@@ -1,9 +1,19 @@
 import { useEffect, useState } from 'react';
 import { OptionContext, PlayContext, StateContext, TimeContext, } from './context';
+import { Howl } from 'howler';
 import defaultState from './state';
 export const StateProvider = ({ children }) => {
     const [state, setState] = useState(defaultState);
     const { minutes, seconds, option, play, lastBreak, session, short, long } = state;
+    // Sound
+    const playSound = () => {
+        const sound = new Howl({
+            src: ['https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav'],
+            html5: true,
+            volume: 0.5
+        });
+        sound.play();
+    };
     // Options
     const changeOption = (choice) => setState((prev) => ({ ...prev, option: choice }));
     // Time
