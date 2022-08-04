@@ -197,34 +197,33 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
   // Keyboard Key Press
 
-  useKey('Escape', (event:any)=> {
+  useKey('Escape', (event: any) => {
     if (event?.key === 'Escape') {
-      setReset(option)
+      setReset(option);
     }
   });
-  
-  useKey('Space', (event:any)=> {
+
+  useKey('Space', (event: any) => {
     if (event?.key === ' ') {
-      console.log(event?.key)
-
+      togglePlay();
     }
   });
 
-  useKey('ArrowUp', (event:any)=> {
+  useKey('ArrowUp', (event: any) => {
     if (event?.key === 'ArrowUp') {
-      console.log(event?.key)
-    }
-  });
-  
-  useKey('ArrowDown', (event:any)=> {
-    if (event?.key === 'ArrowDown') {
-      console.log(event?.key)
+      console.log(event?.key);
     }
   });
 
-  useKey('Tab', (event:any)=> {
+  useKey('ArrowDown', (event: any) => {
+    if (event?.key === 'ArrowDown') {
+      console.log(event?.key);
+    }
+  });
+
+  useKey('Tab', (event: any) => {
     if (event?.key === 'Tab') {
-      console.log(event?.key)
+      console.log(event?.key);
     }
   });
 

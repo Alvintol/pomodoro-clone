@@ -154,7 +154,7 @@ export const StateProvider = ({ children }) => {
     });
     useKey('Space', (event) => {
         if (event?.key === ' ') {
-            console.log(event?.key);
+            togglePlay();
         }
     });
     useKey('ArrowUp', (event) => {
