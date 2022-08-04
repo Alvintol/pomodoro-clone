@@ -5,7 +5,7 @@ const Label = () => {
   const state = useContext(StateContext);
   const {option} = state;
 
-  const labelClass = 'font-bold uppercase text-xl';
+  const labelClass = 'text-blue drop-shadow-sm font-bold uppercase text-xl';
 
   return (
     <div id='label'className={labelClass}>
