@@ -238,6 +238,38 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   });
 
+  useKey('ArrowLeft', (event: any) => {
+    if (event?.key === 'ArrowLeft') {
+      switch (option) {
+        case 'short':
+          isSession();
+          break;
+        case 'long':
+          isShort();
+          break;
+        default:
+          isLong();
+          break;
+      }
+    }
+  });
+
+  useKey('ArrowRight', (event: any) => {
+    if (event?.key === 'ArrowRight') {
+      switch (option) {
+        case 'short':
+          isLong();
+          break;
+        case 'long':
+          isSession();
+          break;
+        default:
+          isShort();
+          break;
+      }
+    }
+  });
+
   useKey('Tab', (event: any) => {
     if (event?.key === 'Tab') {
       event.preventDefault();
