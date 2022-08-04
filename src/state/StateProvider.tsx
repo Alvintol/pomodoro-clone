@@ -1,9 +1,5 @@
 import { ReactNode, useCallback, useEffect, useState } from 'react';
-import {
-  PlayContext,
-  StateContext,
-  TimeContext,
-} from './context';
+import { PlayContext, StateContext, TimeContext } from './context';
 import { Howl } from 'howler';
 import defaultState, { IState } from './state';
 import useKey from '../helpers/eventListener';
@@ -244,9 +240,17 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
   useKey('Tab', (event: any) => {
     if (event?.key === 'Tab') {
-      console.log(event?.key);
-      if (option === 'short') {
-        isLong();
+      event.preventDefault();
+      switch (option) {
+        case 'short':
+          isLong();
+          break;
+        case 'long':
+          isSession();
+          break;
+        default:
+          isShort();
+          break;
       }
     }
   });
