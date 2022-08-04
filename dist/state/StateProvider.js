@@ -1,3 +1,4 @@
+import { jsx as _jsx } from "react/jsx-runtime";
 import { useCallback, useEffect, useState } from 'react';
 import { PlayContext, StateContext, TimeContext } from './context';
 import { Howl } from 'howler';
@@ -228,17 +229,11 @@ export const StateProvider = ({ children }) => {
             }
         }
     });
-    return (<StateContext.Provider value={state}>
-      <TimeContext.Provider value={{
-            addTime,
-            subtractTime,
-            isSession,
-            isShort,
-            isLong,
-        }}>
-        <PlayContext.Provider value={{ togglePlay, setReset }}>
-          {children}
-        </PlayContext.Provider>
-      </TimeContext.Provider>
-    </StateContext.Provider>);
+    return (_jsx(StateContext.Provider, { value: state, children: _jsx(TimeContext.Provider, { value: {
+                addTime,
+                subtractTime,
+                isSession,
+                isShort,
+                isLong,
+            }, children: _jsx(PlayContext.Provider, { value: { togglePlay, setReset }, children: children }) }) }));
 };
