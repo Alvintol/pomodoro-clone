@@ -157,6 +157,11 @@ export const StateProvider = ({ children }) => {
             togglePlay();
         }
     });
+    useKey('Enter', (event) => {
+        if (event?.key === 'Enter') {
+            togglePlay();
+        }
+    });
     useKey('ArrowUp', (event) => {
         if (event?.key === 'ArrowUp') {
             console.log(event?.key);

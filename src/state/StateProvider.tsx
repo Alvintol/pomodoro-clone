@@ -209,6 +209,12 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   });
 
+  useKey('Enter', (event: any) => {
+    if (event?.key === 'Enter') {
+      togglePlay();
+    }
+  });
+
   useKey('ArrowUp', (event: any) => {
     if (event?.key === 'ArrowUp') {
       console.log(event?.key);
