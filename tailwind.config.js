@@ -4,6 +4,7 @@ module.exports = {
     './public/*.html',
     './src/*.jsx',
     './src/components/*.tsx',
+    './dist/components/*.jsx',
     './dist/*.jsx',
     './dist/*.js',
   ],
