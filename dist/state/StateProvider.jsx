@@ -165,6 +165,7 @@ export const StateProvider = ({ children }) => {
     useKey('ArrowUp', (event) => {
         if (event?.key === 'ArrowUp') {
             console.log(event?.key);
+            addTime(option);
         }
     });
     useKey('ArrowDown', (event) => {
