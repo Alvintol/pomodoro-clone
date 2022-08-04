@@ -217,14 +217,13 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
   useKey('ArrowUp', (event: any) => {
     if (event?.key === 'ArrowUp') {
-      console.log(event?.key);
       addTime(option)
     }
   });
 
   useKey('ArrowDown', (event: any) => {
     if (event?.key === 'ArrowDown') {
-      console.log(event?.key);
+      subtractTime(option)
     }
   });
 

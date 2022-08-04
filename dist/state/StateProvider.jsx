@@ -164,13 +164,12 @@ export const StateProvider = ({ children }) => {
     });
     useKey('ArrowUp', (event) => {
         if (event?.key === 'ArrowUp') {
-            console.log(event?.key);
             addTime(option);
         }
     });
     useKey('ArrowDown', (event) => {
         if (event?.key === 'ArrowDown') {
-            console.log(event?.key);
+            subtractTime(option);
         }
     });
     useKey('Tab', (event) => {
