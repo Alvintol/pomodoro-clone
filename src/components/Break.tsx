@@ -20,7 +20,7 @@ const Break = ({ id }: BreakOption) => {
     isToggled(id, option) +
     ' bg-pink flex flex-row w-full text-center justify-center items-center px-5 capitalize sm:px-10 md:w-1/3 ';
 
-  const handleClick = (): void | null=> {
+  const handleClick = (): void | null => {
     if (id === option) return null;
     select?.changeOption(id);
     id === 'short' ? time?.isShort(id) : time?.isLong(id);
