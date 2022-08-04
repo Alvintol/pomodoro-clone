@@ -21,11 +21,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build tsc --jsx preserve -t esnext --outDir dist --noEmit false",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch-tw": "tailwindcss -i ./src/main.css -o ./src/css/main.css --watch",
-    "watch-tsc": "tsc --watch --jsx preserve -t esnext --outDir dist --noEmit false"
+    "watch-tsc": ""
   },
   "eslintConfig": {
     "extends": [
