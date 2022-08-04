@@ -10,6 +10,8 @@ const Arrow = ({ id, type }: arrowBtn) => {
   const state = useContext(StateContext);
   const timeContext = useContext(TimeContext);
 
+  const { minutes, option } = state;
+
   const defaultClass = 'fa-solid mr-1 hover:opacity-50';
   const arrowClass =
     type === 'UP'
@@ -18,9 +20,9 @@ const Arrow = ({ id, type }: arrowBtn) => {
 
   const handleClick = (): void | null => {
     return type === 'UP'
-      ? timeContext?.addTime()
-      : state.minutes > 1
-      ? timeContext?.subtractTime()
+      ? timeContext?.addTime(option)
+      : minutes > 1
+      ? timeContext?.subtractTime(option)
       : null;
   };
 

@@ -10,11 +10,11 @@ export interface IState {
 }
 
 export type MinuteContextType = {
-  addTime: () => void;
-  subtractTime: () => void;
-  isSession: () => void;
-  isShort: () => void;
-  isLong: () => void;
+  addTime: (id: string) => void;
+  subtractTime: (id: string) => void;
+  isSession: (id: string) => void;
+  isShort: (id: string) => void;
+  isLong: (id: string) => void;
 };
 
 export type OptionContextType = {

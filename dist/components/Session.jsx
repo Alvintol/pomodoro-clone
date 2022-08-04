@@ -13,7 +13,7 @@ const Session = () => {
         if (option === 'session')
             return null;
         select?.changeOption('session');
-        time?.isSession();
+        time?.isSession('session');
     };
     return (<div data-testid='session' id='session' className={sessionClass} onClick={handleClick}>
       {option === 'session' ? <Arrow id='down-session' type='DOWN'/> : null}

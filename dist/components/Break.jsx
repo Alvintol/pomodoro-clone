@@ -15,7 +15,7 @@ const Break = ({ id }) => {
         if (id === option)
             return null;
         select?.changeOption(id);
-        id === 'short' ? time?.isShort() : time?.isLong();
+        id === 'short' ? time?.isShort(id) : time?.isLong(id);
     };
     return (<div data-testid='break' id={id} className={breakClass} onClick={handleClick}>
       {id === option ? <Arrow id={downID} type='DOWN'/> : null}

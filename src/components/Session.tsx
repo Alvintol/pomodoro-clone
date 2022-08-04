@@ -16,7 +16,7 @@ const Session = () => {
   const handleClick = (): void | null => {
     if (option === 'session') return null;
     select?.changeOption('session');
-    time?.isSession();
+    time?.isSession('session');
   };
 
   return (

@@ -23,7 +23,7 @@ const Break = ({ id }: BreakOption) => {
   const handleClick = (): void | null=> {
     if (id === option) return null;
     select?.changeOption(id);
-    id === 'short' ? time?.isShort() : time?.isLong();
+    id === 'short' ? time?.isShort(id) : time?.isLong(id);
   };
 
   return (
