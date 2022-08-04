@@ -165,13 +165,13 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
     switch (option) {
       case 'short':
-        time = 5;
+        time = short;
         break;
       case 'long':
-        time = 15;
+        time = long;
         break;
       default:
-        time = 25;
+        time = session;
         break;
     }
     setState(

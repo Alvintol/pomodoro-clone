@@ -121,13 +121,13 @@ export const StateProvider = ({ children }) => {
         let time = 25;
         switch (option) {
             case 'short':
-                time = 5;
+                time = short;
                 break;
             case 'long':
-                time = 15;
+                time = long;
                 break;
             default:
-                time = 25;
+                time = session;
                 break;
         }
         setState((prev) => ({ ...prev, minutes: time, seconds: 0, play: false }));
