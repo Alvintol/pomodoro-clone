@@ -34,7 +34,7 @@ const Break = ({ id }: BreakOption) => {
       onClick={handleClick}
     >
       {id === option ? <Arrow id={downID} type='DOWN' /> : null}
-      {id}
+      {id} Break
       {id === option ? <Arrow id={upID} type='UP' /> : null}
     </div>
   );

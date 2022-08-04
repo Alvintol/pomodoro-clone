@@ -19,7 +19,7 @@ const Break = ({ id }) => {
     };
     return (<div data-testid='break' id={id} className={breakClass} onClick={handleClick}>
       {id === option ? <Arrow id={downID} type='DOWN'/> : null}
-      {id}
+      {id} Break
       {id === option ? <Arrow id={upID} type='UP'/> : null}
     </div>);
 };
