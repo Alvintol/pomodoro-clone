@@ -32,9 +32,9 @@ const defaultState: IState = {
   option: 'session',
   play: false,
   lastBreak: 'long',
-  session: 25,
-  short: 5, 
-  long: 15
+  session: 0,
+  short: 0, 
+  long: 0
 };
 
 export default defaultState;

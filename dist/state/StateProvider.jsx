@@ -8,9 +8,11 @@ export const StateProvider = ({ children }) => {
     // Sound
     const playSound = () => {
         const sound = new Howl({
-            src: ['https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav'],
+            src: [
+                'https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav',
+            ],
             html5: true,
-            volume: 0.5
+            volume: 0.5,
         });
         sound.play();
     };
@@ -83,6 +85,7 @@ export const StateProvider = ({ children }) => {
                         }));
                     }
                     else {
+                        playSound();
                         if (option !== 'session') {
                             setState((prev) => ({
                                 ...prev,

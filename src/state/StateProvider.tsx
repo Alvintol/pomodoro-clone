@@ -5,7 +5,7 @@ import {
   StateContext,
   TimeContext,
 } from './context';
-import {Howl} from 'howler';
+import { Howl } from 'howler';
 import defaultState, { IState } from './state';
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
@@ -17,12 +17,14 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
   const playSound = () => {
     const sound = new Howl({
-      src: ['https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav'],
+      src: [
+        'https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav',
+      ],
       html5: true,
-      volume: 0.5
+      volume: 0.5,
     });
-    sound.play()
-  }
+    sound.play();
+  };
 
   // Options
 
@@ -119,6 +121,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
               })
             );
           } else {
+            playSound();
             if (option !== 'session') {
               setState(
                 (prev): IState => ({
