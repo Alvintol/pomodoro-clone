@@ -18,13 +18,12 @@ const Arrow = ({ id, type }: arrowBtn) => {
       ? ' fa-arrow-up-long ' + defaultClass
       : ' fa-arrow-down-long ' + defaultClass;
 
-  const handleClick = (): void | null => {
-    return type === 'UP'
+  const handleClick = (): void | null =>
+    type === 'UP'
       ? timeContext?.addTime(option)
       : minutes > 1
       ? timeContext?.subtractTime(option)
       : null;
-  };
 
   return (
     <i
