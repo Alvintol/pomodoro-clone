@@ -26,9 +26,13 @@ const Session = () => {
       className={sessionClass}
       onClick={handleClick}
     >
-      {option === 'session' ? <Arrow id='down-session' type='DOWN' /> : null}
+      {option === 'session' ? (
+        <Arrow id='down-session' type='DOWN' keyTrigger='ArrowDown' />
+      ) : null}
       Session
-      {option === 'session' ? <Arrow id='up-session' type='UP' /> : null}
+      {option === 'session' ? (
+        <Arrow id='up-session' type='UP' keyTrigger='ArrowUp' />
+      ) : null}
     </div>
   );
 };

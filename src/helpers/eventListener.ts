@@ -1,18 +1,21 @@
 import { useEffect, useRef } from 'react';
 
-const useKey = (key: string, callback: () => void): void => {
+const useKey = (key:any, callback:any) => {
+
   const callbackRef = useRef(callback);
 
+  useEffect(() => callbackRef.current = callback)
+
   useEffect(() => {
-    const handle = (event: any) => {
+    const handle = (event:any) => {
       if (event.code === key) {
-        callbackRef.current()
+        callbackRef.current(event)
       }
-    };
-    document.addEventListener('keydown', handle);
+    }
+    document.addEventListener('keydown', handle)
 
     return () => document.removeEventListener('keydown', handle)
-  }, [key]);
+  }, [key])
 };
 
 export default useKey;

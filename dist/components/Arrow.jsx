@@ -1,6 +1,7 @@
 import { useContext } from 'react';
+import useKey from '../helpers/eventListener';
 import { StateContext, TimeContext } from '../state/context';
-const Arrow = ({ id, type }) => {
+const Arrow = ({ id, type, keyTrigger }) => {
     const state = useContext(StateContext);
     const timeContext = useContext(TimeContext);
     const { minutes, option } = state;
@@ -15,6 +16,12 @@ const Arrow = ({ id, type }) => {
                 ? timeContext?.subtractTime(option)
                 : null;
     };
+    // Keyboard Key Press
+    useKey(keyTrigger, (event) => {
+        if (event?.key === keyTrigger) {
+            console.log('EVENT:', event?.key);
+        }
+    });
     return (<i data-testid='arrow' id={id} className={arrowClass} onClick={handleClick}></i>);
 };
 export default Arrow;
