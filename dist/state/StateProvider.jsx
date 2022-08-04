@@ -149,7 +149,7 @@ export const StateProvider = ({ children }) => {
     // Keyboard Key Press
     useKey('Escape', (event) => {
         if (event?.key === 'Escape') {
-            console.log(event?.key);
+            setReset(option);
         }
     });
     useKey('Space', (event) => {

@@ -199,13 +199,14 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
   useKey('Escape', (event:any)=> {
     if (event?.key === 'Escape') {
-      console.log(event?.key)
+      setReset(option)
     }
   });
   
   useKey('Space', (event:any)=> {
     if (event?.key === ' ') {
       console.log(event?.key)
+
     }
   });
 
