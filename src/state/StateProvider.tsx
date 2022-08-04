@@ -51,13 +51,37 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const subtractTime = (id: string): void =>
-    setState(
-      (prev): IState => ({
-        ...prev,
-        minutes: prev.minutes--,
-      })
-    );
+  const subtractTime = (id: string): void => {
+    switch (id) {
+      case 'short':
+        setState(
+          (prev): IState => ({
+            ...prev,
+            minutes: prev.minutes--,
+            short: prev.short--,
+          })
+        );
+        break;
+      case 'long':
+        setState(
+          (prev): IState => ({
+            ...prev,
+            minutes: prev.minutes--,
+            long: prev.long--,
+          })
+        );
+        break;
+      default:
+        setState(
+          (prev): IState => ({
+            ...prev,
+            minutes: prev.minutes--,
+            session: prev.session--,
+          })
+        );
+        break;
+    }
+  };
 
   const isSession = (): void =>
     setState((prev): IState => ({ ...prev, minutes: session, seconds: 0 }));

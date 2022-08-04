@@ -32,10 +32,31 @@ export const StateProvider = ({ children }) => {
                 break;
         }
     };
-    const subtractTime = (id) => setState((prev) => ({
-        ...prev,
-        minutes: prev.minutes--,
-    }));
+    const subtractTime = (id) => {
+        switch (id) {
+            case 'short':
+                setState((prev) => ({
+                    ...prev,
+                    minutes: prev.minutes--,
+                    short: prev.short--,
+                }));
+                break;
+            case 'long':
+                setState((prev) => ({
+                    ...prev,
+                    minutes: prev.minutes--,
+                    long: prev.long--,
+                }));
+                break;
+            default:
+                setState((prev) => ({
+                    ...prev,
+                    minutes: prev.minutes--,
+                    session: prev.session--,
+                }));
+                break;
+        }
+    };
     const isSession = () => setState((prev) => ({ ...prev, minutes: session, seconds: 0 }));
     const isShort = () => setState((prev) => ({ ...prev, minutes: short, seconds: 0 }));
     const isLong = () => setState((prev) => ({ ...prev, minutes: long, seconds: 0 }));
