@@ -7,6 +7,7 @@ import {
 } from './context';
 import { Howl } from 'howler';
 import defaultState, { IState } from './state';
+import useKey from '../helpers/eventListener';
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<IState>(defaultState);
@@ -193,6 +194,38 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
       (prev): IState => ({ ...prev, minutes: time, seconds: 0, play: false })
     );
   };
+
+  // Keyboard Key Press
+
+  useKey('Escape', (event:any)=> {
+    if (event?.key === 'Escape') {
+      console.log(event?.key)
+    }
+  });
+  
+  useKey('Space', (event:any)=> {
+    if (event?.key === ' ') {
+      console.log(event?.key)
+    }
+  });
+
+  useKey('ArrowUp', (event:any)=> {
+    if (event?.key === 'ArrowUp') {
+      console.log(event?.key)
+    }
+  });
+  
+  useKey('ArrowDown', (event:any)=> {
+    if (event?.key === 'ArrowDown') {
+      console.log(event?.key)
+    }
+  });
+
+  useKey('Tab', (event:any)=> {
+    if (event?.key === 'Tab') {
+      console.log(event?.key)
+    }
+  });
 
   return (
     <StateContext.Provider value={state}>

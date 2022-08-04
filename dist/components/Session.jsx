@@ -16,9 +16,9 @@ const Session = () => {
         time?.isSession('session');
     };
     return (<div data-testid='session' id='session' className={sessionClass} onClick={handleClick}>
-      {option === 'session' ? (<Arrow id='down-session' type='DOWN' keyTrigger='ArrowDown'/>) : null}
+      {option === 'session' ? <Arrow id='down-session' type='DOWN'/> : null}
       Session
-      {option === 'session' ? (<Arrow id='up-session' type='UP' keyTrigger='ArrowUp'/>) : null}
+      {option === 'session' ? <Arrow id='up-session' type='UP'/> : null}
     </div>);
 };
 export default Session;

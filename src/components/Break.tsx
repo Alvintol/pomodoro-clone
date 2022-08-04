@@ -33,9 +33,9 @@ const Break = ({ id }: BreakOption) => {
       className={breakClass}
       onClick={handleClick}
     >
-      {id === option ? <Arrow id={downID} type='DOWN' keyTrigger='ArrowDown' /> : null}
+      {id === option ? <Arrow id={downID} type='DOWN' /> : null}
       {id} Break
-      {id === option ? <Arrow id={upID} type='UP' keyTrigger='ArrowUp' /> : null}
+      {id === option ? <Arrow id={upID} type='UP' /> : null}
     </div>
   );
 };

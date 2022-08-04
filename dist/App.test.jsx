@@ -36,7 +36,7 @@ describe('Components', () => {
         expect(breakTest).toBeInTheDocument();
     });
     it('renders Arrow component', () => {
-        render(<Arrow id='test' type='test' keyTrigger='test'/>);
+        render(<Arrow id='test' type='test'/>);
         const arrow = screen.getByTestId('arrow');
         expect(arrow).toBeInTheDocument();
     });

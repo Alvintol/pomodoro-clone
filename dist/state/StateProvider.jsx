@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { OptionContext, PlayContext, StateContext, TimeContext, } from './context';
 import { Howl } from 'howler';
 import defaultState from './state';
+import useKey from '../helpers/eventListener';
 export const StateProvider = ({ children }) => {
     const [state, setState] = useState(defaultState);
     const { minutes, seconds, option, play, lastBreak, session, short, long } = state;
@@ -145,6 +146,32 @@ export const StateProvider = ({ children }) => {
         }
         setState((prev) => ({ ...prev, minutes: time, seconds: 0, play: false }));
     };
+    // Keyboard Key Press
+    useKey('Escape', (event) => {
+        if (event?.key === 'Escape') {
+            console.log(event?.key);
+        }
+    });
+    useKey('Space', (event) => {
+        if (event?.key === ' ') {
+            console.log(event?.key);
+        }
+    });
+    useKey('ArrowUp', (event) => {
+        if (event?.key === 'ArrowUp') {
+            console.log(event?.key);
+        }
+    });
+    useKey('ArrowDown', (event) => {
+        if (event?.key === 'ArrowDown') {
+            console.log(event?.key);
+        }
+    });
+    useKey('Tab', (event) => {
+        if (event?.key === 'Tab') {
+            console.log(event?.key);
+        }
+    });
     return (<StateContext.Provider value={state}>
       <TimeContext.Provider value={{
             addTime,
