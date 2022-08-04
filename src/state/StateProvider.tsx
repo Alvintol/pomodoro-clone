@@ -30,8 +30,8 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         setState(
           (prev): IState => ({
             ...prev,
-            minutes: prev.minutes++,
-            short: prev.short++,
+            minutes: ++prev.minutes,
+            short: ++prev.short,
           })
         );
         break;
@@ -39,8 +39,8 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         setState(
           (prev): IState => ({
             ...prev,
-            minutes: prev.minutes++,
-            long: prev.long++,
+            minutes: ++prev.minutes,
+            long: ++prev.long,
           })
         );
         break;
@@ -48,8 +48,8 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         setState(
           (prev): IState => ({
             ...prev,
-            minutes: prev.minutes++,
-            session: prev.session++,
+            minutes: ++prev.minutes,
+            session: ++prev.session,
           })
         );
         break;
@@ -62,8 +62,8 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         setState(
           (prev): IState => ({
             ...prev,
-            minutes: prev.minutes--,
-            short: prev.short--,
+            minutes: --prev.minutes,
+            short: --prev.short,
           })
         );
         break;
@@ -71,8 +71,8 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         setState(
           (prev): IState => ({
             ...prev,
-            minutes: prev.minutes--,
-            long: prev.long--,
+            minutes: --prev.minutes,
+            long: --prev.long,
           })
         );
         break;
@@ -80,8 +80,8 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         setState(
           (prev): IState => ({
             ...prev,
-            minutes: prev.minutes--,
-            session: prev.session--,
+            minutes: --prev.minutes,
+            session: --prev.session,
           })
         );
         break;
@@ -132,14 +132,14 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
   useEffect((): (() => void) | undefined => {
     if (play) {
       const interval = setInterval((): void => {
-        clearInterval(interval);
+        // clearInterval(interval);
 
-        if (seconds < 1) {
-          if (minutes >= 1) {
+        if (seconds === 0) {
+          if (minutes !== 0) {
             setState(
               (prev): IState => ({
                 ...prev,
-                minutes: prev.minutes--,
+                minutes: --prev.minutes,
                 seconds: 59,
               })
             );
@@ -157,7 +157,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
             }
           }
         } else {
-          setState((prev): IState => ({ ...prev, seconds: prev.seconds-- }));
+          setState((prev): IState => ({ ...prev, seconds: --prev.seconds }));
         }
       }, 1000);
       return () => clearInterval(interval);
