@@ -92,7 +92,7 @@ export const StateProvider = ({ children }) => {
     useEffect(() => {
         if (play) {
             const interval = setInterval(() => {
-                // clearInterval(interval);
+                clearInterval(interval);
                 if (seconds === 0) {
                     if (minutes !== 0) {
                         setState((prev) => ({

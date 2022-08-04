@@ -56,7 +56,9 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const subtractTime = (id: string): void => {
+  const subtractTime = (id: string): void | null => {
+    if (minutes === 1) return null;
+
     switch (id) {
       case 'short':
         setState(
@@ -132,7 +134,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
   useEffect((): (() => void) | undefined => {
     if (play) {
       const interval = setInterval((): void => {
-        // clearInterval(interval);
+        clearInterval(interval);
 
         if (seconds === 0) {
           if (minutes !== 0) {

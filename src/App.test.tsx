@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { useState } from 'react';
 import App from './App';
 import Arrow from './components/Arrow';
 import Break from './components/Break';
