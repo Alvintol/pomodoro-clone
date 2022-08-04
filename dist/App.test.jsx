@@ -5,6 +5,7 @@ import Break from './components/Break';
 import Container from './components/Container';
 import Control from './components/Control';
 import Controls from './components/Controls';
+import Label from './components/Label';
 import Options from './components/Options';
 import Session from './components/Session';
 import Timer from './components/Timer';
@@ -39,6 +40,11 @@ describe('Components', () => {
         render(<Arrow id='test' type='test'/>);
         const arrow = screen.getByTestId('arrow');
         expect(arrow).toBeInTheDocument();
+    });
+    it('renders Label component', () => {
+        render(<Label />);
+        const label = screen.getByTestId('label');
+        expect(label).toBeInTheDocument();
     });
     it('renders Timer component', () => {
         render(<Timer />);
