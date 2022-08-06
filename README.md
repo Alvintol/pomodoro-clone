@@ -17,7 +17,7 @@ Live demo [here](http://pomodoro-clone.alvintolentino.com).
  - `Escape`: Resets timer
 
 
-[video demo of project]()
+[video demo of project](https://user-images.githubusercontent.com/96437758/183229364-12756a43-573d-4423-8981-ed8f4ec2725e.mov)
 
 
 ## Dependancies
