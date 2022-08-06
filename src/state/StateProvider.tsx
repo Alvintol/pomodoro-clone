@@ -9,8 +9,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
   const { minutes, seconds, option, play, lastBreak, session, short, long } =
     state;
 
-  // Sound
-
+  // Plays alarm sound
   const playSound = () => {
     const sound = new Howl({
       src: [
@@ -22,8 +21,9 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     sound.play();
   };
 
-  // Time
+  // Functions associated with time control
 
+  // Adds a minute to current display timer and changes default option time
   const addTime = (id: string): void => {
     switch (id) {
       case 'short':
@@ -56,7 +56,10 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // Subtracts a minute to current display timer and changes default option time
   const subtractTime = (id: string): void | null => {
+
+    // Stops from subtracting below 1 minute
     if (minutes === 1) return null;
 
     switch (id) {
@@ -90,6 +93,9 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // Options button controls
+
+  // Changes state to display Session option
   const isSession = useCallback(
     (): void =>
       setState(
@@ -103,6 +109,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     [session]
   );
 
+  // Changes state to display Short Break option
   const isShort = useCallback(
     (): void =>
       setState(
@@ -117,6 +124,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     [short]
   );
 
+  // Changes state to display Long Break option
   const isLong = useCallback(
     (): void =>
       setState(
@@ -131,13 +139,24 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     [long]
   );
 
+
+  // Display timer 
+
   useEffect((): (() => void) | undefined => {
+
+    // Only triggers if state.play is true
     if (play) {
+
+      // Starts interval
       const interval = setInterval((): void => {
+
+        // Shuts down existing interval, if active 
         clearInterval(interval);
 
         if (seconds === 0) {
           if (minutes !== 0) {
+            
+            // Triggers if there are minutes remaining in state 
             setState(
               (prev): IState => ({
                 ...prev,
@@ -146,11 +165,18 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
               })
             );
           } else {
+
+            // Triggers if all time in current session/break run out
+
             playSound();
             if (option !== 'session') {
+
+              // Switches to Task/Work Session
               isSession();
             }
             if (option === 'session') {
+
+              // Switches to Break next break
               if (lastBreak === 'long') {
                 isShort();
               } else {
@@ -159,6 +185,8 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
             }
           }
         } else {
+
+          // Only remove seconds from remaining time
           setState((prev): IState => ({ ...prev, seconds: --prev.seconds }));
         }
       }, 1000);
@@ -180,6 +208,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
   // Controls
 
+  // Changes state.play to true/false
   const togglePlay = (): void => {
     setState(
       (prev): IState => ({
@@ -189,6 +218,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  // Reverts timer numbers back to assigned default state 
   const setReset = (option: string): void => {
     let time: number = 25;
 
@@ -208,38 +238,44 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  // Keyboard Key Press
+  // Keyboard Key Press listeners 
 
+  // Resets Timer
   useKey('Escape', (event: any) => {
     if (event?.key === 'Escape') {
       setReset(option);
     }
   });
 
+  // Toggles Play button
   useKey('Space', (event: any) => {
     if (event?.key === ' ') {
       togglePlay();
     }
   });
 
+  // Toggles Play button
   useKey('Enter', (event: any) => {
     if (event?.key === 'Enter') {
       togglePlay();
     }
   });
 
+  // Adds time to timer
   useKey('ArrowUp', (event: any) => {
     if (event?.key === 'ArrowUp') {
       addTime(option);
     }
   });
 
+  // Subtract time from timer
   useKey('ArrowDown', (event: any) => {
     if (event?.key === 'ArrowDown') {
       subtractTime(option);
     }
   });
 
+  // Changes session/break option left/up 
   useKey('ArrowLeft', (event: any) => {
     if (event?.key === 'ArrowLeft') {
       switch (option) {
@@ -256,6 +292,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   });
 
+  // Changes session/break option right/down 
   useKey('ArrowRight', (event: any) => {
     if (event?.key === 'ArrowRight') {
       switch (option) {
@@ -272,6 +309,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   });
 
+  // Changes session/break option right/down 
   useKey('Tab', (event: any) => {
     if (event?.key === 'Tab') {
       event.preventDefault();
@@ -289,6 +327,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
   });
 
+  // Wraps all above functions and state through the app to avoid prop drilling
   return (
     <StateContext.Provider value={state}>
       <TimeContext.Provider

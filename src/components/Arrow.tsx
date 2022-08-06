@@ -18,6 +18,7 @@ const Arrow = ({ id, type }: arrowBtn) => {
       ? ' fa-arrow-up-long ' + defaultClass
       : ' fa-arrow-down-long ' + defaultClass;
 
+  // Adds/Subracts 1 minute from timer upon button click
   const handleClick = (): void | null =>
     type === 'UP'
       ? timeContext?.addTime(option)

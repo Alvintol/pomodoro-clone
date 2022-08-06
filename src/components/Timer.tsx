@@ -6,9 +6,11 @@ const Timer = () => {
   const state = useContext(StateContext);
   const { minutes, seconds } = state;
 
+  // Makes sure that display number is always double digit
   const mins: string | number = minutes === 0 ? '00' : minutes;
   const secs: string | number = seconds === 0 ? '00' : seconds;
 
+  // Makes sure that display number is always double digit
   const time = (num: string | number): string | number =>
     num.toString().length > 1 ? num : `0${num}`;
 

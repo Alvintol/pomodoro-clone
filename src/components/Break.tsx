@@ -19,6 +19,7 @@ const Break = ({ id }: BreakOption) => {
     isToggled(id, option) +
     ' bg-pink flex flex-row w-full text-center justify-center items-center px-5 capitalize sm:px-10 md:w-1/3 ';
 
+  // Changes app to display to short/long break time upon button click
   const handleClick = (): void | null => {
     if (id === option) return null;
     id === 'short' ? time?.isShort(id) : time?.isLong(id);
@@ -31,9 +32,15 @@ const Break = ({ id }: BreakOption) => {
       className={breakClass}
       onClick={handleClick}
     >
-      {id === option ? <Arrow id={downID} type='DOWN' /> : null}
+      {
+        // Only render arrow components if the current session/break is active
+        id === option ? <Arrow id={downID} type='DOWN' /> : null
+      }
       {id} Break
-      {id === option ? <Arrow id={upID} type='UP' /> : null}
+      {
+        // Only render arrow components if the current session/break is active
+        id === option ? <Arrow id={upID} type='UP' /> : null
+      }
     </div>
   );
 };

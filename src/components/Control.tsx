@@ -11,6 +11,7 @@ const Control = ({ id }: ControlBtn) => {
   const play = useContext(PlayContext);
   const { option } = state;
 
+  // Conditionally renders class for specific button/state
   const iconClass = () => {
     switch (id) {
       case 'START':
@@ -22,6 +23,7 @@ const Control = ({ id }: ControlBtn) => {
     }
   };
 
+  // Resets timer upon button click
   const handleClick = () => {
     id === 'RESET' ? play?.setReset(option) : play?.togglePlay();
   };

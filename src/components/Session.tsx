@@ -12,6 +12,7 @@ const Session = () => {
     isToggled('session', option) +
     ' bg-pink flex flex-row w-full text-center justify-center items-center px-5 capitalize sm:px-10 md:w-1/3 ';
 
+  // Changes app to display session time upon click
   const handleClick = (): void | null => {
     if (option === 'session') return null;
     time?.isSession('session');
@@ -24,9 +25,15 @@ const Session = () => {
       className={sessionClass}
       onClick={handleClick}
     >
-      {option === 'session' ? <Arrow id='down-session' type='DOWN' /> : null}
+      {
+        // Only render arrow components if the current session/break is active
+        option === 'session' ? <Arrow id='down-session' type='DOWN' /> : null
+      }
       Session
-      {option === 'session' ? <Arrow id='up-session' type='UP' /> : null}
+      {
+        // Only render arrow components if the current session/break is active
+        option === 'session' ? <Arrow id='up-session' type='UP' /> : null
+      }
     </div>
   );
 };
